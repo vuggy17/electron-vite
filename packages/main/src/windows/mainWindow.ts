@@ -2,7 +2,7 @@ import {app, BrowserWindow} from 'electron';
 import {join} from 'node:path';
 import {URL} from 'node:url';
 
-export async function createWindow() {
+async function createWindow() {
   const browserWindow = new BrowserWindow({
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
     webPreferences: {
@@ -48,7 +48,7 @@ export async function createWindow() {
 /**
  * Restore an existing BrowserWindow or Create a new BrowserWindow.
  */
-export async function restoreOrCreateOverlayWindow() {
+export async function restoreOrCreateMainWindow() {
   let window = BrowserWindow.getAllWindows().find(w => !w.isDestroyed());
 
   if (window === undefined) {
@@ -60,4 +60,6 @@ export async function restoreOrCreateOverlayWindow() {
   }
 
   window.focus();
+
+  return window;
 }

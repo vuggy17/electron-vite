@@ -10,7 +10,7 @@ const App = () => {
 
       <button
         type="button"
-        onClick={() => createWindow('overlay')}
+        onClick={() => createWindow('resultView12').then((result) => console.log('ok', result))}
       >
         create new window
       </button>

@@ -1,22 +1,13 @@
+import {createOverlayWindow} from '/@/windows/overlayWindow';
 import {app} from 'electron';
 import './security-restrictions';
-import {restoreOrCreateMainWindow} from '/@/mainWindow';
+import {restoreOrCreateMainWindow} from './windows/mainWindow';
 import {platform} from 'node:process';
-import '../ipc-handlers';
-/**
- * Prevent electron from running multiple instances.
- */
-const isSingleInstance = app.requestSingleInstanceLock();
-if (!isSingleInstance) {
-  app.quit();
-  process.exit(0);
-}
-app.on('second-instance', restoreOrCreateMainWindow);
-
-/**
- * Disable Hardware Acceleration to save more system resources.
- */
-app.disableHardwareAcceleration();
+import logger from '../../../shared/lib/logger';
+import * as ModuleManagers from './utils/module-manager';
+import {ContentProtectionModule, OcrModule} from './modules';
+import AppModule from './modules/app';
+import WindowManager from './utils/window-manager';
 
 /**
  * Shout down background process if all windows was closed
@@ -28,6 +19,11 @@ app.on('window-all-closed', () => {
 });
 
 /**
+ * Disable Hardware Acceleration to save more system resources.
+ */
+app.disableHardwareAcceleration();
+
+/**
  * @see https://www.electronjs.org/docs/latest/api/app#event-activate-macos Event: 'activate'.
  */
 app.on('activate', restoreOrCreateMainWindow);
@@ -37,8 +33,19 @@ app.on('activate', restoreOrCreateMainWindow);
  */
 app
   .whenReady()
-  .then(restoreOrCreateMainWindow)
-  .catch(e => console.error('Failed create window:', e));
+  .then(async () => {
+    const mainWindow = await restoreOrCreateMainWindow();
+    const translateWindow = await createOverlayWindow();
+
+    // Init modules
+    ModuleManagers.init(
+      new AppModule(mainWindow),
+      new WindowManager(),
+      new ContentProtectionModule(translateWindow!),
+      new OcrModule(),
+    );
+  })
+  .catch(logger.error);
 
 /**
  * Install Vue.js or any other extension in development mode only.
@@ -78,5 +85,5 @@ if (import.meta.env.PROD) {
         (module.default.autoUpdater as typeof module['autoUpdater']);
       return autoUpdater.checkForUpdatesAndNotify();
     })
-    .catch(e => console.error('Failed check and install updates:', e));
+    .catch(e => logger.error('Failed check and install updates:', e));
 }
