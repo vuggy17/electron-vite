@@ -3,7 +3,7 @@ const Channels = {
   WINDOW_CREATE: 'window-create',
 
   OCR_EXTRACT: 'ocr-extract',
-  OCR_VALIDATE_LANGUAGE: 'ocr-validate-language',
+  OCR_CHECK_LANGUAGE: 'ocr-check-language',
 };
 
 export default Channels;

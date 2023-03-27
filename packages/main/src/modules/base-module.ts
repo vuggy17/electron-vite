@@ -2,7 +2,7 @@
  * Example of Module, other modules should extent this class
  */
 
-import os from 'os';
+import * as os from 'os';
 
 import logger from '../../../../shared/lib/logger';
 

@@ -1,5 +1,4 @@
-
-import {createWindow} from '#preload';
+import {createWindow, extractText} from '#preload';
 
 const App = () => {
   return (
@@ -10,9 +9,23 @@ const App = () => {
 
       <button
         type="button"
-        onClick={() => createWindow('resultView12').then((result) => console.log('ok', result))}
+        onClick={() =>
+          createWindow('resultView12')
+            .then(result => console.log('ok', result))
+            .catch(error => console.log('error', error))
+        }
       >
         create new window
+      </button>
+      <button
+        type="button"
+        onClick={() =>
+          extractText('image string', 'eng')
+            .then(result => console.log('ok', result))
+            .catch(error => console.log('error', error))
+        }
+      >
+        extract text from image
       </button>
     </div>
   );

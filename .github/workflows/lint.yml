@@ -10,7 +10,6 @@ on:
       - '**.mts'
       - '**.cts'
       - '**.tsx'
-      - '**.vue'
       - '**.json'
   pull_request:
     paths:
@@ -22,7 +21,6 @@ on:
       - '**.mts'
       - '**.cts'
       - '**.tsx'
-      - '**.vue'
       - '**.json'
 
 concurrency:
