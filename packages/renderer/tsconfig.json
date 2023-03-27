@@ -34,7 +34,7 @@
     "src/**/*.tsx",
     "types/**/*.d.ts",
     "../../types/**/*.d.ts",
-    "../../shared/**/*.ts"
+    "../../shared/lib/ipc-channels.ts"
   ],
   "exclude": [
     "**/*.spec.ts",
