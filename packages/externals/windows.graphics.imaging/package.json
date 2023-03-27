@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Use the Windows.Graphics.Imaging UWP API directly from Node.js",
   "main": "lib/main.js",
+  "typings": "lib/main.d.ts",
   "keywords": [
     "Windows.Graphics.Imaging",
     "Windows",

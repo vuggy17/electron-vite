@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Use the Windows.Globalization UWP API directly from Node.js",
   "main": "lib/main.js",
+  "typings": "lib/.main.d.ts",
   "keywords": [
     "Windows.Globalization",
     "Windows",
