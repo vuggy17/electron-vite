@@ -2,9 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@nodert-win10/nodert-streams': link:./packages/externals/nodert.streams
-  '@nodert-win11-22h2/windows.globalization': link:./packages/externals/windows.globalization
-  '@nodert-win11-22h2/windows.graphics.imaging': link:./packages/externals/windows.graphics.imaging
-  '@nodert-win11-22h2/windows.media.ocr': link:./packages/externals/windows.media.ocr
   '@types/node': 18.15.3
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
@@ -28,16 +25,19 @@ specifiers:
   unplugin-auto-expose: 0.0.4
   vite: 4.1.4
   vitest: 0.29.3
+  windows.globalization: link:./packages/externals/windows.globalization
+  windows.graphics.imaging: link:./packages/externals/windows.graphics.imaging
+  windows.media.ocr: link:./packages/externals/windows.media.ocr
   winston: ^3.8.2
 
 dependencies:
   '@nodert-win10/nodert-streams': link:packages/externals/nodert.streams
-  '@nodert-win11-22h2/windows.globalization': link:packages/externals/windows.globalization
-  '@nodert-win11-22h2/windows.graphics.imaging': link:packages/externals/windows.graphics.imaging
-  '@nodert-win11-22h2/windows.media.ocr': link:packages/externals/windows.media.ocr
   electron-updater: 5.3.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  windows.globalization: link:packages/externals/windows.globalization
+  windows.graphics.imaging: link:packages/externals/windows.graphics.imaging
+  windows.media.ocr: link:packages/externals/windows.media.ocr
   winston: 3.8.2
 
 devDependencies:
