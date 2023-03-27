@@ -5,7 +5,7 @@ import {restoreOrCreateMainWindow} from './windows/mainWindow';
 import {platform} from 'node:process';
 import logger from '../../../shared/lib/logger';
 import * as ModuleManagers from './utils/module-manager';
-import {ContentProtectionModule, OcrModule} from './modules';
+import {CapturerModule, ContentProtectionModule, OcrModule} from './modules';
 import AppModule from './modules/app';
 import WindowManager from './utils/window-manager';
 
@@ -43,6 +43,7 @@ app
       new WindowManager(),
       new ContentProtectionModule(translateWindow!),
       new OcrModule(),
+      new CapturerModule(),
     );
   })
   .catch(logger.error);

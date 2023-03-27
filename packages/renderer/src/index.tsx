@@ -1,11 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import {ErrorBoundary} from 'react-error-boundary';
+
+function Fallback({error, resetErrorBoundary}: any) {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre style={{color: 'red'}}>{error.message}</pre>
+      <button onClick={() => resetErrorBoundary()}>Continue to app</button>
+    </div>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary
+      FallbackComponent={Fallback}
+      onError={(error: Error, info: {componentStack: string}) => console.error(error.message, info)}
+    >
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>,
 );
-

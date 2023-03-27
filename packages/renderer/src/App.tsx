@@ -10,9 +10,9 @@ const App = () => {
       <button
         type="button"
         onClick={() =>
-          createWindow('resultView12')
+          createWindow('resultView')
             .then(result => console.log('ok', result))
-            .catch(error => console.log('error', error))
+            .catch(error => { console.log('err', error);})
         }
       >
         create new window
@@ -22,7 +22,6 @@ const App = () => {
         onClick={() =>
           extractText('image string', 'eng')
             .then(result => console.log('ok', result))
-            .catch(error => console.log('error', error))
         }
       >
         extract text from image

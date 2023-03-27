@@ -14,11 +14,11 @@ specifiers:
   eslint: 8.36.0
   eslint-plugin-vue: 9.9.0
   happy-dom: 8.9.0
-  i: ^0.3.7
   nano-staged: 0.8.0
   playwright: 1.31.2
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-error-boundary: ^4.0.2
   simple-git-hooks: 2.8.1
   typescript: 4.9.5
   unplugin-auto-expose: 0.0.4
@@ -28,7 +28,6 @@ specifiers:
 
 dependencies:
   electron-updater: 5.3.0
-  i: 0.3.7
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   winston: 3.8.2
@@ -48,6 +47,7 @@ devDependencies:
   happy-dom: 8.9.0
   nano-staged: 0.8.0
   playwright: 1.31.2
+  react-error-boundary: 4.0.2_react@18.2.0
   simple-git-hooks: 2.8.1
   typescript: 4.9.5
   unplugin-auto-expose: 0.0.4
@@ -250,6 +250,13 @@ packages:
     dependencies:
       '@babel/core': 7.21.3
       '@babel/helper-plugin-utils': 7.20.2
+    dev: true
+
+  /@babel/runtime/7.21.0:
+    resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
     dev: true
 
   /@babel/template/7.20.7:
@@ -2406,11 +2413,6 @@ packages:
       - supports-color
     dev: true
 
-  /i/0.3.7:
-    resolution: {integrity: sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==}
-    engines: {node: '>=0.4'}
-    dev: false
-
   /iconv-corefoundation/1.1.7:
     resolution: {integrity: sha512-T10qvkw0zz4wnm560lOEg0PovVqUXuOFhhHAkixw8/sycy7TJt7v/RrkEKEQnAw2viPSJu6iAkErxnzR0g8PpQ==}
     engines: {node: ^8.11.2 || >=10}
@@ -2698,7 +2700,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /loupe/2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
@@ -3153,6 +3154,15 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-error-boundary/4.0.2_react@18.2.0:
+    resolution: {integrity: sha512-/h21OS80hQ1m/s5UVOp1JKkC8XmUo0rOTRUliGSmWtvswkbbijuQ074K0QLEHwxwwesTt7ksR74/9EHImqWo+A==}
+    peerDependencies:
+      react: '>=16.13.1'
+    dependencies:
+      '@babel/runtime': 7.21.0
+      react: 18.2.0
+    dev: true
+
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
@@ -3167,7 +3177,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-config-file/6.2.0:
     resolution: {integrity: sha512-gx7Pgr5I56JtYz+WuqEbQHj/xWo+5Vwua2jhb1VwM4Wid5PqYmZ4i00ZB0YEGIfkVBsCv9UrjgyqCiQfS/Oosg==}
@@ -3206,6 +3215,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: true
+
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: true
 
   /require-directory/2.1.1:
