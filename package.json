@@ -57,8 +57,8 @@
     "react-dom": "^18.2.0",
     "winston": "^3.8.2",
     "@nodert-win10/nodert-streams": "link:./packages/externals/nodert.streams",
-    "@nodert-win11-22h2/windows.globalization": "link:./packages/externals/windows.globalization",
-    "@nodert-win11-22h2/windows.graphics.imaging": "link:./packages/externals/windows.graphics.imaging",
-    "@nodert-win11-22h2/windows.media.ocr": "link:./packages/externals/windows.media.ocr"
+    "windows.globalization": "link:./packages/externals/windows.globalization",
+    "windows.graphics.imaging": "link:./packages/externals/windows.graphics.imaging",
+    "windows.media.ocr": "link:./packages/externals/windows.media.ocr"
   }
 }
