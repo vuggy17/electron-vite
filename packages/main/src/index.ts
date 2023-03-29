@@ -56,8 +56,9 @@ app
 //   app
 //     .whenReady()
 //     .then(() => import('electron-devtools-installer'))
-//     .then(({default: installExtension, REACT_DEVELOPER_TOOLS}) => {
-//       installExtension(REACT_DEVELOPER_TOOLS, {
+//     .then(module => {
+//       console.log(module);
+//       module.default.default(module.REACT_DEVELOPER_TOOLS, {
 //         loadExtensionOptions: {
 //           allowFileAccess: true,
 //         },
