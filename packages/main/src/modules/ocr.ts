@@ -1,4 +1,6 @@
+import {Language} from 'windows.globalization';
 import {OcrEngine} from 'windows.media.ocr';
+
 // TODO: remove this when we actually implement the ocr module
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type {IpcMainInvokeEvent} from 'electron';
@@ -50,7 +52,8 @@ export default class OcrModule extends Module {
   }
 
   private async extractTextFromImage(image: string, lang: string): Promise<string> {
-    const engine = new OcrEngine();
+    const language = new Language('en-US');
+    console.log(OcrEngine.isLanguageSupported(language));
     return 'Google Translate is an online translation tool developed by Google. It provides website interfaces, mobile apps for Android and iOS operating systems, and application programming interfaces that help developers build web browser extensions and software applications.';
   }
 

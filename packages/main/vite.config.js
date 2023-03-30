@@ -33,6 +33,7 @@ const config = {
       output: {
         entryFileNames: '[name].cjs',
       },
+      external: ['windows.media.ocr', 'windows.globalization'],
     },
     emptyOutDir: true,
     reportCompressedSize: false,
