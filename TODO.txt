@@ -1,1 +1,0 @@
-clean up postinstall script to only rebuild external package on node_module (currently include packages/external/*)

@@ -20,6 +20,10 @@
       ],
       "/@/*": [
         "./src/*"
+      ],
+      "#internal": [
+        "../internal/src",
+        "../internal/src/ports/*.ts"
       ]
     },
     "lib": [
@@ -34,7 +38,8 @@
     "src/**/*.tsx",
     "types/**/*.d.ts",
     "../../types/**/*.d.ts",
-    "../../shared/lib/ipc-channels.ts"
+    "../../shared/lib/ipc-channels.ts",
+    "../internal/src/ports/index.ts",
   ],
   "exclude": [
     "**/*.spec.ts",

@@ -1,8 +1,5 @@
-/* eslint-env node */
-
 import {chrome} from '../../.electron-vendors.cache.json';
-import react from '@vitejs/plugin-react';
-import {renderer} from 'unplugin-auto-expose';
+import {preload} from 'unplugin-auto-expose';
 import {join} from 'node:path';
 import {injectAppVersion} from '../../version/inject-app-version-plugin.mjs';
 
@@ -22,37 +19,26 @@ const config = {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
     },
   },
-  base: '',
-  server: {
-    fs: {
-      strict: true,
-    },
-  },
   build: {
-    sourcemap: true,
+    ssr: true,
+    sourcemap: 'inline',
     target: `chrome${chrome}`,
     outDir: 'dist',
     assetsDir: '.',
+    minify: process.env.MODE !== 'development',
+    lib: {
+      entry: 'src/index.ts',
+      formats: ['cjs'],
+    },
     rollupOptions: {
-      input: join(PACKAGE_ROOT, 'index.html'),
+      output: {
+        entryFileNames: '[name].cjs',
+      },
     },
     emptyOutDir: true,
     reportCompressedSize: false,
   },
-  test: {
-    environment: 'happy-dom',
-  },
-  plugins: [
-    react(),
-    renderer.vite({
-      preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.ts'),
-    }),
-    injectAppVersion(),
-  ],
-  // to make vite pre-bundle faster https://github.com/vitejs/vite/issues/8850, this behavior could be implemented by vite 4.2.1
-  optimizeDeps: {
-    include: ['@ant-design/icons', 'react', 'antd'],
-  },
+  plugins: [preload.vite(), injectAppVersion()],
 };
 
 export default config;

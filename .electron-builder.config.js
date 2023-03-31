@@ -20,6 +20,10 @@ module.exports = async function () {
     extraMetadata: {
       version: getVersion(),
     },
+    nsis: {
+      artifactName: '${productName} Setup ${version}.${ext}',
+      uninstallDisplayName: '${productName} Uninstall',
+    },
 
     // Specify linux target just for disabling snap compilation
     linux: {

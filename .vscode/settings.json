@@ -6,9 +6,15 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "**/node_modules": false
+        "**/node_modules": false,
+        "**/dist": true,
+        "**/tsconfig.json": false,
+        "**/vite.config.js": false,
+        "vite.config.js": false,
+        "packages/externals": true
     },
     "cSpell.words": [
         "pnpm"
-    ]
+    ],
+    "explorerExclude.backup": {}
 }

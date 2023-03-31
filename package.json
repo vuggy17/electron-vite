@@ -1,12 +1,12 @@
 {
-  "name": "vite-electron-builder",
+  "name": "window-text-extraction",
   "description": "Secure boilerplate for Electron app based on Vite",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "private": true,
   "author": {
-    "email": "kozackunisoft@gmail.com",
-    "name": "Alex Kozack",
-    "url": "https://kozack.me"
+    "email": "vuggy17@gmail.com",
+    "name": "Duy Vu",
+    "url": "https://github.com/vuggy17"
   },
   "main": "packages/main/dist/index.cjs",
   "scripts": {
@@ -26,9 +26,9 @@
     "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
     "typecheck:renderer": "tsc --noEmit -p packages/renderer/tsconfig.json",
     "typecheck": "npm run typecheck:main && npm run typecheck:preload && npm run typecheck:renderer",
-    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs && electron-builder install-app-deps && electron-rebuild",
-    "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,tsx,json}\"",
-    "rebuild": "electron-rebuild -f -w windows.globalization"
+    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs && electron-builder install-app-deps && electron-rebuild -m .",
+    "cleanup": "node scripts/cleanup-build-artifacts.mjs",
+    "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,tsx,json}\""
   },
   "devDependencies": {
     "@types/node": "18.15.3",
@@ -53,7 +53,9 @@
     "vitest": "0.29.3"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@electron/rebuild": "^3.2.10",
+    "antd": "^5.3.3",
     "electron-updater": "5.3.0",
     "nodert-streams": "file:packages/externals/nodert.streams",
     "react": "^18.2.0",
