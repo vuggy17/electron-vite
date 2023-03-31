@@ -60,6 +60,7 @@
     "nodert-streams": "file:packages/externals/nodert.streams",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0",
     "windows.globalization": "file:packages/externals/windows.globalization",
     "windows.graphics.imaging": "file:packages/externals/windows.graphics.imaging",
     "windows.media.ocr": "file:packages/externals/windows.media.ocr",

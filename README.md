@@ -6,6 +6,7 @@ This project provides a tool for extracting text from various file formats on Wi
 To use this tool, you will need a Windows machine with the .NET Framework 4.5 or later installed. You can download the latest version of the .NET Framework from the Microsoft website.
 
 You also need C++ installed
+Plus, You have to install Visual studio 2022 which will be use to install desktop development with C++ workload, then install window SDK 10.0.22621 inside that workload
 
 To get started with the tool, follow these steps:
 1. Download the latest release of the tool from the project's GitHub repository.
