@@ -3,8 +3,9 @@ import './App.css';
 import {useState, useRef} from 'react';
 import ThemeProvider from './Theme';
 import MenuPage from './pages/menu';
-import {Layout, Tabs} from 'antd';
+import {Avatar, Button, Col, Input, Layout, Row, Tabs, Typography} from 'antd';
 import Routes from './routes';
+import {SettingOutlined} from '@ant-design/icons';
 
 const defaultTabs = [{label: 'Menu', children: <MenuPage />, key: '1', closable: false}];
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
@@ -88,13 +89,45 @@ const App = () => {
           height: '100vh',
         }}
       >
-        <Tabs
-          type="editable-card"
-          onChange={onChange}
-          activeKey={activeTabKey}
-          onEdit={onEdit}
-          items={availableTabs}
-        />
+        <Layout.Header>
+          <Row>
+            <Col span={4}>
+              <div
+                style={{
+                  backgroundColor: 'gray',
+                }}
+              >
+                app logo
+              </div>
+            </Col>
+            <Col flex={1}>
+              <div
+                style={{
+                  maxWidth: '60%',
+                  margin: '0 auto',
+                }}
+              >
+                <Input placeholder="Search for something" />
+              </div>
+            </Col>
+
+            <Col span={4}>
+              <Typography.Text type="secondary">Vuggy17</Typography.Text>
+              <Avatar />
+
+              <Button icon={<SettingOutlined />} />
+            </Col>
+          </Row>
+        </Layout.Header>
+        <Layout.Content>
+          <Tabs
+            type="editable-card"
+            onChange={onChange}
+            activeKey={activeTabKey}
+            onEdit={onEdit}
+            items={availableTabs}
+          />
+        </Layout.Content>
       </Layout>
     </ThemeProvider>
   );
