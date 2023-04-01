@@ -11,9 +11,15 @@ export default function ThemeProvider({isDark, children}: Props) {
     <ConfigProvider
       theme={{
         algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
-        token: {
-          colorPrimary: '#00b96b',
-        },
+        // token: {
+        //   colorPrimary: '#00b96b',
+        // },
+        // components: {
+        //   Layout: {
+        //     colorBgHeader: '#00b96b',
+        //     colorTextBase: '#fff',
+        //   },
+        // },
       }}
     >
       {children}

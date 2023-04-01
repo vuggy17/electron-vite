@@ -10,6 +10,7 @@ export default function MenuPage() {
     <Layout>
       <div>
         <Typography.Title level={1}>React App</Typography.Title>
+        <h1 className="text-3xl font-bold underline">Tailwind works</h1>
 
         <Typography.Text>hello dasdsa redsadsaact</Typography.Text>
         <Button
