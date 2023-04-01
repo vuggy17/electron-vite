@@ -1,22 +1,14 @@
-import {useState} from 'react';
 import {createWindow, extractText} from '#preload';
 import {Button, Layout, Typography} from 'antd';
-import {FireTwoTone, StarTwoTone} from '@ant-design/icons';
+import LanguageSelector from '../components/lang-selector';
 
 export default function MenuPage() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   return (
     <Layout>
       <div>
         <Typography.Title level={1}>React App</Typography.Title>
-        <h1 className="text-3xl font-bold underline">Tailwind works</h1>
+        <LanguageSelector />
 
-        <Typography.Text>hello dasdsa redsadsaact</Typography.Text>
-        <Button
-          icon={isDarkMode ? <StarTwoTone /> : <FireTwoTone />}
-          onClick={() => setIsDarkMode(!isDarkMode)}
-        />
         <Button
           onClick={() =>
             createWindow('resultView')

@@ -201,15 +201,15 @@ const App = () => {
                                   <g
                                     id="Light-页面-1"
                                     stroke="none"
-                                    stroke-width="1"
+                                    strokeWidth="1"
                                     fill="none"
-                                    fill-rule="evenodd"
+                                    fillRule="evenodd"
                                   >
                                     <g
                                       id="Light-主题包"
                                       transform="translate(-2943.000000, -292.000000)"
                                       fill="currentColor"
-                                      fill-rule="nonzero"
+                                      fillRule="nonzero"
                                     >
                                       <g
                                         id="Light-编组-12"
@@ -262,15 +262,15 @@ const App = () => {
                                   <g
                                     id="Dark-页面-1"
                                     stroke="none"
-                                    stroke-width="1"
+                                    strokeWidth="1"
                                     fill="none"
-                                    fill-rule="evenodd"
+                                    fillRule="evenodd"
                                   >
                                     <g
                                       id="Dark-默认"
                                       transform="translate(-9.000000, -49.500000)"
                                       fill="currentColor"
-                                      fill-rule="nonzero"
+                                      fillRule="nonzero"
                                     >
                                       <g
                                         id="Dark-编组-17"

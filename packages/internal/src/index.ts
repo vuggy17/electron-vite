@@ -2,6 +2,6 @@
  * @module internal
  */
 
-// export * from './core/domain';
-// export * from './core/services';
 export * from './ports';
+export * from './core/entities';
+export * from './core/services';

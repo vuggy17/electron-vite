@@ -13,6 +13,7 @@ export default class OcrModule extends Module {
   async load() {
     ipcMain.handle(Channels.OCR_EXTRACT, this.extractText.bind(this));
     ipcMain.handle(Channels.OCR_CHECK_LANGUAGE, this.hasSupport.bind(this));
+    ipcMain.handle(Channels.OCR_GET_AVAILABLE_LANGUAGE, this.getAvailableLanguages.bind(this));
   }
 
   previousText = '';
@@ -72,5 +73,36 @@ export default class OcrModule extends Module {
       logger.error(this.constructor.name, error);
       throw error;
     }
+  }
+
+  /**
+   * get all available languages that can be used by the ocr engine
+   */
+  public getAvailableLanguages(): Language[] {
+    /*
+    {
+  abbreviatedName: undefined,
+  layoutDirection: undefined,
+  script: undefined,
+  nativeName: undefined,
+  languageTag: undefined,
+  displayName: undefined,
+  getExtensionSubtags: [Function: getExtensionSubtags]
+}*/
+    // console.log(
+    //   'abbreviatedName',
+    //   (OcrEngine.availableRecognizerLanguages as any)[0].abbreviatedName,
+    // );
+    // console.log(
+    //   'layoutDirection',
+    //   (OcrEngine.availableRecognizerLanguages as any)[0].layoutDirection,
+    // );
+    // console.log('script', (OcrEngine.availableRecognizerLanguages as any)[0].script);
+
+    // console.log('nativeName', (OcrEngine.availableRecognizerLanguages as any)[0].nativeName);
+    // console.log('languageTag', (OcrEngine.availableRecognizerLanguages as any)[0].languageTag);
+    // console.log('displayName', (OcrEngine.availableRecognizerLanguages as any)[0].displayName);
+    // console.log((OcrEngine.availableRecognizerLanguages as any)[0].getExtensionSubtags());
+    return [];
   }
 }

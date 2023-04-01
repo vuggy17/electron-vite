@@ -40,6 +40,7 @@
     "../../types/**/*.d.ts",
     "../../shared/lib/ipc-channels.ts",
     "../internal/src/ports/index.ts",
+    "../internal/src/*ts"
   ],
   "exclude": [
     "**/*.spec.ts",

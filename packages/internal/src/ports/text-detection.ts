@@ -1,5 +1,7 @@
+import type {Language} from '../core/entities';
+
 export interface TextDetectionPort {
-  getTextFromImage(image: string, language: string): Promise<string>;
+  getTextFromImage(image: string, language: Language): Promise<string>;
   /**
    * get the id of window for application to stream the image to
    */
@@ -10,4 +12,6 @@ export interface TextDetectionPort {
    * @param targetId the id of window for application to stream the image from
    */
   attachCapturer(targetId: string): Promise<boolean>;
+
+  getSupportedLanguages(): Promise<Language[]>;
 }

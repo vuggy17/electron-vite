@@ -6,4 +6,4 @@ export {sha256sum} from './nodeCrypto';
 export {versions} from './versions';
 export {invoke, send} from './danger-ipc';
 export {createWindow, changeWindowContentProtection} from './window';
-export {extractText, canProcessOCRForLanguage} from './ocr';
+export {extractText, canProcessOCRForLanguage, getAvailableOCRLanguage} from './ocr';

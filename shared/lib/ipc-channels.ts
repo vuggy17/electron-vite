@@ -6,6 +6,7 @@ const Channels = {
 
   OCR_EXTRACT: 'ocr-extract',
   OCR_CHECK_LANGUAGE: 'ocr-check-language',
+  OCR_GET_AVAILABLE_LANGUAGE: 'ocr-get-available-language',
 
   CAPTURER_GET_SCREEN_SOURCES: 'capturer-get-screen-sources',
   CAPTURER_GET_WINDOW_SOURCES: 'capturer-get-window-sources',
