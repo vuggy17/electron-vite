@@ -1,0 +1,1 @@
+rename DI to di to match convention
