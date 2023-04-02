@@ -1,9 +1,20 @@
-import {TextDetectionService} from './../../../../internal/src/core/services/text-detection.service';
 import type {TextDetectionPort} from '#internal';
+import {TextDetectionService} from '../../../../internal/src/core/services/text-detection.service';
 import LanguageAdapter from './adapter';
+import {autoInjectable, inject, registry} from 'tsyringe';
+import {TEXT_DETECTION_SERVICE} from '../../../../di';
 
-class DetectTextController {
-  constructor(private readonly textDetector: TextDetectionPort) {}
+@autoInjectable()
+@registry([{token: 'text-detection-service', useClass: TextDetectionService}])
+export class DetectTextController {
+  private readonly textDetector: TextDetectionPort;
+
+  constructor(@inject(TEXT_DETECTION_SERVICE) readonly _textDetector?: TextDetectionPort) {
+    if (!_textDetector) {
+      throw new ReferenceError(DetectTextController.constructor.name + 'has missing dependency');
+    }
+    this.textDetector = _textDetector;
+  }
 
   async getSupportedLanguages() {
     const langs = await this.textDetector.getSupportedLanguages();
@@ -23,7 +34,7 @@ class DetectTextController {
   }
 }
 
-// TODO: dependency injection so we don't need to expose real service to the outside
-const port = new TextDetectionService();
-const RealDetectTextController = new DetectTextController(port);
-export {RealDetectTextController as DetectTextController};
+// // TODO: dependency injection so we don't need to expose real service to the outside
+// const port = new TextDetectionService();
+// const RealDetectTextController = new DetectTextController(port);
+// export {RealDetectTextController as DetectTextController};

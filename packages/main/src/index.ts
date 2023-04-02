@@ -1,14 +1,14 @@
-import {createOverlayWindow} from '/@/windows/overlayWindow';
+import '@abraham/reflection';
 import {app} from 'electron';
-import './security-restrictions';
-import {restoreOrCreateMainWindow} from './windows/mainWindow';
 import {platform} from 'node:process';
 import logger from '../../../shared/lib/logger';
-import * as ModuleManagers from './utils/module-manager';
 import {CapturerModule, ContentProtectionModule, OcrModule} from './modules';
 import AppModule from './modules/app';
+import './security-restrictions';
+import * as ModuleManagers from './utils/module-manager';
 import WindowManager from './utils/window-manager';
-
+import {restoreOrCreateMainWindow} from './windows/mainWindow';
+import {createOverlayWindow} from '/@/windows/overlayWindow';
 /**
  * Shout down background process if all windows was closed
  */
@@ -41,7 +41,8 @@ app
     ModuleManagers.init(
       new AppModule(mainWindow),
       new WindowManager(),
-      new ContentProtectionModule(translateWindow!),
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      new ContentProtectionModule(translateWindow),
       new OcrModule(),
       new CapturerModule(),
     );

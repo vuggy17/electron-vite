@@ -10,6 +10,6 @@
     "types": ["node"],
     "baseUrl": "."
   },
-  "include": ["src/**/*.ts", "../../types/**/*.d.ts", "../../shared"],
+  "include": ["src/**/*.ts", "../../types/**/*.d.ts", "../../shared", "../renderer/src/ioc-container.ts"],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

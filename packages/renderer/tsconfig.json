@@ -10,6 +10,8 @@
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "types": [
       "node"
     ],
@@ -24,7 +26,10 @@
       "#internal": [
         "../internal/src",
         "../internal/src/ports/*.ts"
-      ]
+      ],
+      "#di": [
+        "../di/renderer/*",
+      ],
     },
     "lib": [
       "ESNext",
@@ -40,7 +45,8 @@
     "../../types/**/*.d.ts",
     "../../shared/lib/ipc-channels.ts",
     "../internal/src/ports/index.ts",
-    "../internal/src/*ts"
+    "../internal/src/*.ts",
+    "../di/renderer/*.ts",
   ],
   "exclude": [
     "**/*.spec.ts",

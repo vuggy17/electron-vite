@@ -12,10 +12,13 @@
         "**/vite.config.js": false,
         "vite.config.js": false,
         "packages/externals": true,
-        "packages/preload": false
+        "packages/preload": false,
+        "packages/main": false
     },
     "cSpell.words": [
-        "pnpm"
+        "pnpm",
+        "tsyringe"
     ],
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

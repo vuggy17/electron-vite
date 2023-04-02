@@ -6,6 +6,7 @@ import {renderer} from 'unplugin-auto-expose';
 import {join} from 'node:path';
 import {injectAppVersion} from '../../version/inject-app-version-plugin.mjs';
 
+const ioc = require.resolve('tsyringe/dist/esm2015/index.js');
 const PACKAGE_ROOT = __dirname;
 const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');
 
@@ -20,6 +21,7 @@ const config = {
   resolve: {
     alias: {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
+      tsyringe: ioc, // this make pre-bundle slower, but make autoInject worked, https://github.com/microsoft/tsyringe/issues/142
     },
   },
   base: '',

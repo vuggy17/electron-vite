@@ -1,9 +1,15 @@
+import '@abraham/reflection';
+import '#di'; // register all dependencies
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import {ErrorBoundary} from 'react-error-boundary';
 
-function Fallback({error, resetErrorBoundary}: any) {
+
+function Fallback({error, resetErrorBoundary}: {
+  error: Error;
+  resetErrorBoundary: () => void;
+}) {
   return (
     <div role="alert">
       <p>Something went wrong:</p>

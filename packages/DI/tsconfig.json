@@ -8,22 +8,14 @@
     "strict": true,
     "isolatedModules": true,
     "types": [
-      "node",
-      "vite/client"
+      "node"
     ],
-    "baseUrl": ".",
-    "paths": {
-      "/@/*": [
-        "./src/*"
-      ],
-    }
+    "baseUrl": "."
   },
   "include": [
     "src/**/*.ts",
     "../../types/**/*.d.ts",
-    "../../shared",
-    "src/utils",
-    "../renderer/src/ioc-container.ts"
+    "../internal"
   ],
   "exclude": [
     "**/*.spec.ts",
