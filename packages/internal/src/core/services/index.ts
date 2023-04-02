@@ -1,1 +1,1 @@
-export * from './text-detection.service';
+export {TextDetectionService} from './text-detection.service';

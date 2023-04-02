@@ -1,11 +1,9 @@
 import type {TextDetectionPort} from '#internal';
-import {TextDetectionService} from '../../../../internal/src/core/services/text-detection.service';
 import LanguageAdapter from './adapter';
-import {autoInjectable, inject, registry} from 'tsyringe';
+import {autoInjectable, inject} from 'tsyringe';
 import {TEXT_DETECTION_SERVICE} from '../../../../di';
 
 @autoInjectable()
-@registry([{token: 'text-detection-service', useClass: TextDetectionService}])
 export class DetectTextController {
   private readonly textDetector: TextDetectionPort;
 
@@ -33,8 +31,3 @@ export class DetectTextController {
     return langs.map(LanguageAdapter.createLanguageFromInternal);
   }
 }
-
-// // TODO: dependency injection so we don't need to expose real service to the outside
-// const port = new TextDetectionService();
-// const RealDetectTextController = new DetectTextController(port);
-// export {RealDetectTextController as DetectTextController};
