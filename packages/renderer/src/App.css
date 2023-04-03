@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.modified-tabs .ant-tabs-nav-wrap {
+  background-color: #f5f5f5;
+}
