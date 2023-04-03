@@ -21,7 +21,8 @@ const config = {
   resolve: {
     alias: {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
-      tsyringe: ioc, // this make pre-bundle slower, but make autoInject worked, https://github.com/microsoft/tsyringe/issues/142
+      '#shared': join(PROJECT_ROOT, 'shared'),
+      tsyringe: ioc, // this make pre-bundle slower, but make autoInject work!, https://github.com/microsoft/tsyringe/issues/142
     },
   },
   base: '',

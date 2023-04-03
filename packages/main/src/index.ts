@@ -41,7 +41,6 @@ app
     ModuleManagers.init(
       new AppModule(mainWindow),
       new WindowManager(),
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       new ContentProtectionModule(translateWindow),
       new OcrModule(),
       new CapturerModule(),

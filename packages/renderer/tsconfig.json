@@ -27,8 +27,8 @@
         "../internal/src",
         "../internal/src/ports/*.ts"
       ],
-      "#di": [
-        "../di/renderer/*",
+      "#shared/*": [
+        "../../shared/*",
       ],
     },
     "lib": [
@@ -43,10 +43,9 @@
     "src/**/*.tsx",
     "types/**/*.d.ts",
     "../../types/**/*.d.ts",
-    "../../shared/lib/ipc-channels.ts",
+    "../../shared/**/*.d.ts",
     "../internal/src/ports/index.ts",
     "../internal/src/*.ts",
-    "../di/renderer/*.ts",
   ],
   "exclude": [
     "**/*.spec.ts",
