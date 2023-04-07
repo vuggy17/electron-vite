@@ -17,18 +17,17 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "#preload": [
-        "../preload/src/index"
-      ],
       "/@/*": [
         "./src/*"
       ],
-      "#internal": [
-        "../internal/src",
-        "../internal/src/ports/*.ts"
-      ],
       "#shared/*": [
-        "../../shared/*",
+        "../shared/*",
+      ],
+      "#internal/*": [
+        "../internal/src/*",
+      ],
+      "#preload": [
+        "../preload/src/index"
       ],
     },
     "lib": [
@@ -38,14 +37,11 @@
     ]
   },
   "include": [
-    "src/**/*.vue",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "types/**/*.d.ts",
     "../../types/**/*.d.ts",
-    "../../shared/**/*.d.ts",
-    "../internal/src/ports/index.ts",
-    "../internal/src/*.ts",
+    "../shared/**/*.ts",
+    "../internal/**/*.ts",
   ],
   "exclude": [
     "**/*.spec.ts",

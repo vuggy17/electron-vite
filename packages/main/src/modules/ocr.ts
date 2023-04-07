@@ -1,4 +1,4 @@
-import {Language} from 'windows.globalization';
+import {Language as WinrtLanguage} from 'windows.globalization';
 import {OcrEngine} from 'windows.media.ocr';
 
 // TODO: remove this when we actually implement the ocr module
@@ -6,8 +6,10 @@ import {OcrEngine} from 'windows.media.ocr';
 import type {IpcMainInvokeEvent} from 'electron';
 import {ipcMain} from 'electron';
 import Module from './base-module';
-import Channels from '../../../../shared/lib/ipc-channels';
-import logger from '../../../../shared/lib/logger';
+import Channels from '#shared/lib/ipc-channels';
+import logger from '/@/utils/logger';
+import {WinrtParser} from '../utils/winrt-adapter';
+import type {Language} from '../../../internal/src/core/entities';
 
 export default class OcrModule extends Module {
   async load() {
@@ -53,7 +55,7 @@ export default class OcrModule extends Module {
   }
 
   private async extractTextFromImage(image: string, lang: string): Promise<string> {
-    const language = new Language('en-US');
+    const language = new WinrtLanguage('en-US');
     console.log(OcrEngine.isLanguageSupported(language));
     return 'Google Translate is an online translation tool developed by Google. It provides website interfaces, mobile apps for Android and iOS operating systems, and application programming interfaces that help developers build web browser extensions and software applications.';
   }
@@ -79,30 +81,10 @@ export default class OcrModule extends Module {
    * get all available languages that can be used by the ocr engine
    */
   public getAvailableLanguages(): Language[] {
-    /*
-    {
-  abbreviatedName: undefined,
-  layoutDirection: undefined,
-  script: undefined,
-  nativeName: undefined,
-  languageTag: undefined,
-  displayName: undefined,
-  getExtensionSubtags: [Function: getExtensionSubtags]
-}*/
-    // console.log(
-    //   'abbreviatedName',
-    //   (OcrEngine.availableRecognizerLanguages as any)[0].abbreviatedName,
-    // );
-    // console.log(
-    //   'layoutDirection',
-    //   (OcrEngine.availableRecognizerLanguages as any)[0].layoutDirection,
-    // );
-    // console.log('script', (OcrEngine.availableRecognizerLanguages as any)[0].script);
-
-    // console.log('nativeName', (OcrEngine.availableRecognizerLanguages as any)[0].nativeName);
-    // console.log('languageTag', (OcrEngine.availableRecognizerLanguages as any)[0].languageTag);
-    // console.log('displayName', (OcrEngine.availableRecognizerLanguages as any)[0].displayName);
-    // console.log((OcrEngine.availableRecognizerLanguages as any)[0].getExtensionSubtags());
-    return [];
+    const winrtLangs = OcrEngine.availableRecognizerLanguages;
+    const lang = WinrtParser.parseList<Language>(winrtLangs, item =>
+      WinrtParser.parseLanguage(item as WinrtLanguage),
+    );
+    return lang;
   }
 }

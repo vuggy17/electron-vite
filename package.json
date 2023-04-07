@@ -13,7 +13,7 @@
     "build": "npm run build:main && npm run build:preload && npm run build:renderer",
     "build:main": "cd ./packages/main && vite build",
     "build:preload": "cd ./packages/preload && vite build",
-    "build:renderer": "cd ./packages/renderer && vite build",
+    "build:renderer": "vite build --config ./packages/renderer/vite.config.js",
     "compile": "cross-env MODE=production npm run build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
     "test": "npm run test:main && npm run test:preload && npm run test:renderer && npm run test:e2e",
     "test:e2e": "npm run build && vitest run",
@@ -25,7 +25,8 @@
     "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
     "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
     "typecheck:renderer": "tsc --noEmit -p packages/renderer/tsconfig.json",
-    "typecheck": "npm run typecheck:main && npm run typecheck:preload && npm run typecheck:renderer",
+    "typecheck:internal": "tsc --noEmit -p packages/internal/tsconfig.json",
+    "typecheck": "npm run typecheck:internal && npm run typecheck:main && npm run typecheck:preload && npm run typecheck:renderer",
     "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs && electron-builder install-app-deps && electron-rebuild -m .",
     "cleanup": "node scripts/cleanup-build-artifacts.mjs",
     "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,tsx,json}\""
@@ -52,7 +53,7 @@
     "tailwindcss": "^3.3.1",
     "typescript": "~4.9.5",
     "unplugin-auto-expose": "0.0.4",
-    "vite": "4.1.4",
+    "vite": "^4.2.1",
     "vitest": "0.29.3"
   },
   "dependencies": {
@@ -60,6 +61,7 @@
     "@ant-design/icons": "^5.0.1",
     "@electron/rebuild": "^3.2.10",
     "antd": "^5.3.3",
+    "beautiful-react-hooks": "^4.3.0",
     "electron-updater": "5.3.0",
     "nodert-streams": "file:packages/externals/nodert.streams",
     "react": "^18.2.0",

@@ -17,10 +17,14 @@
       "#preload": [
         "../preload/src/index"
       ],
+      "#preload/*": [
+        "../preload/src/*"
+      ]
     }
   },
   "include": [
     "src/**/*.ts",
+    "../preload/**/*.ts",
     "../../types/**/*.d.ts"
   ],
   "exclude": [

@@ -1,4 +1,5 @@
-import {TextDetectionService} from '../../../../packages/internal/src/core/services';
+import {TextDetectionService} from './../../../../internal/src/core/services/text-detection.service';
+
 import {container} from 'tsyringe';
 import {TEXT_DETECTION_SERVICE} from './tokens';
 

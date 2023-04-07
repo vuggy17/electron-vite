@@ -24,9 +24,12 @@ root.render(
   <React.StrictMode>
     <ErrorBoundary
       FallbackComponent={Fallback}
-      onError={(error: Error, info: {componentStack: string}) => console.error(error.message, info)}
+      onError={(error: Error, info: {componentStack: string}) =>
+        console.error(error.message, info)
+      }
     >
       <App />
     </ErrorBoundary>
   </React.StrictMode>,
 );
+

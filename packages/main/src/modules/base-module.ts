@@ -4,7 +4,7 @@
 
 import * as os from 'os';
 
-import logger from '../../../../shared/lib/logger';
+import logger from '/@/utils/logger';
 
 /**
  * @description

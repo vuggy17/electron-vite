@@ -9,21 +9,24 @@
     "isolatedModules": true,
     "types": [
       "node",
-      "vite/client"
     ],
     "baseUrl": ".",
     "paths": {
       "/@/*": [
         "./src/*"
       ],
+      "#shared/*": [
+        "../shared/*"
+      ],
+      "#preload": [
+        "../preload/src/index"
+      ],
     }
   },
   "include": [
     "src/**/*.ts",
     "../../types/**/*.d.ts",
-    "../../shared",
-    "src/utils",
-    "../renderer/src/ioc-container.ts"
+    "../shared/**/*.ts",
   ],
   "exclude": [
     "**/*.spec.ts",

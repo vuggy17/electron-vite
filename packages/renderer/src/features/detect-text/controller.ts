@@ -1,7 +1,7 @@
-import type {TextDetectionPort} from '#internal';
-import {TEXT_DETECTION_SERVICE} from '#shared/lib/di/renderer';
 import LanguageAdapter from './adapter';
 import {autoInjectable, inject} from 'tsyringe';
+import {TEXT_DETECTION_SERVICE} from '#shared/lib/di/renderer';
+import type {TextDetectionPort} from '#internal/ports';
 
 @autoInjectable()
 export class DetectTextController {

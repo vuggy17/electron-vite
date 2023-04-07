@@ -16,6 +16,7 @@ const config = {
   resolve: {
     alias: {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
+      '#shared/': join(PACKAGE_ROOT, '../shared') + '/',
     },
   },
   build: {

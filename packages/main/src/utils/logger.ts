@@ -1,7 +1,7 @@
 import * as winston from 'winston';
 import * as path from 'path';
 
-export default winston.createLogger({
+const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.splat(),
     winston.format.timestamp({
@@ -21,3 +21,5 @@ export default winston.createLogger({
     }),
   ],
 });
+
+export default logger;

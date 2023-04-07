@@ -1,16 +1,16 @@
 import {theme} from 'antd';
 import {ConfigProvider} from 'antd';
+import { useDarkMode } from './hooks/useDarkMode';
 
-interface Props extends React.PropsWithChildren {
-  isDark: boolean;
-}
-export default function ThemeProvider({isDark, children}: Props) {
+type Props = React.PropsWithChildren
+export default function ThemeProvider({children}: Props) {
   const {defaultAlgorithm, darkAlgorithm} = theme;
+  const {isDarkMode} = useDarkMode();
 
   return (
     <ConfigProvider
       theme={{
-        algorithm: isDark ? darkAlgorithm : defaultAlgorithm,
+        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
         // token: {
         //   colorPrimary: '#00b96b',
         // },

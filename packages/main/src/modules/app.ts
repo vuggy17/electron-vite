@@ -1,6 +1,6 @@
+import logger from '/@/utils/logger';
 import {app} from 'electron';
 import WindowedModule from './window';
-import logger from '../../../../shared/lib/logger';
 
 export default class AppModule extends WindowedModule {
   /**
