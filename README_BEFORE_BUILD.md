@@ -11,11 +11,9 @@ Happy path 🤪
 
 ### Q&A
 
-1. **Resouce busy or locked:**
-You’ll get this error when your local package has build or release folder, just make sure there is no folders contained in it.
+1. **Resouce busy or locked:** You’ll get this error when your local package has build or release folder, just make sure there is no folders contained in it.
 
-1. **<your package manager> install fail:**
-You’ll get this error when you use incorrect package manager to install your package, [see this link](https://github.com/pnpm/pnpm/issues/2135) for an example of that, I have no idea why it happens.
+1. **<your package manager> install fail:** You’ll get this error when you use incorrect package manager to install your package, [see this link](https://github.com/pnpm/pnpm/issues/2135) for an example of that, I have no idea why it happens.
 
 1. **Ultimate guide to solve other problems:**
 

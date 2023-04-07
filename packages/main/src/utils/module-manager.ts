@@ -1,4 +1,5 @@
 import logger from '/@/utils/logger';
+
 import type {Module} from '../modules';
 
 export const init = async (...modules: Module[]): Promise<void> => {

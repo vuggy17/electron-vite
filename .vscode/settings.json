@@ -1,26 +1,23 @@
 {
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/node_modules": false,
-        "**/dist": false,
-        "**/tsconfig.json": false,
-        "**/vite.config.js": false,
-        "vite.config.js": false,
-        "packages/externals": true,
-        "packages/preload": false,
-        "packages/main": false,
-        "buildResources": true
-    },
-    "cSpell.words": [
-        "pnpm",
-        "tailwindcss",
-        "tsyringe"
-    ],
-    "explorerExclude.backup": {},
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": false,
+    "**/dist": false,
+    "**/tsconfig.json": false,
+    "**/vite.config.js": false,
+    "vite.config.js": false,
+    "packages/externals": false,
+    "packages/preload": false,
+    "packages/main": false,
+    "buildResources": true
+  },
+  "cSpell.words": ["Falourd", "Guillaume", "pnpm", "tailwindcss", "tsyringe", "typecheck", "Winrt"],
+  "explorerExclude.backup": {},
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

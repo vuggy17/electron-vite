@@ -1,19 +1,20 @@
-import {SettingOutlined, GithubOutlined} from '@ant-design/icons';
+import {GithubOutlined, SettingOutlined} from '@ant-design/icons';
 import {
-  Layout,
-  Row,
+  Avatar,
+  Button,
   Col,
   ConfigProvider,
+  Image,
   Input,
-  Space,
+  Layout,
   Popover,
-  Button,
-  Avatar,
-  Typography,
+  Row,
+  Space,
   Switch,
   Tooltip,
-  Image,
+  Typography,
 } from 'antd';
+
 import avatar from '../../assets/default-avatar.svg';
 import {useDarkMode} from '../hooks/useDarkMode';
 

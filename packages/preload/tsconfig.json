@@ -10,9 +10,7 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "#preload": [
-        "../preload/src/index"
-      ],
+      "#preload": ["../preload/src/index"]
     }
   },
   "include": ["src/**/*.ts", "../../types/**/*.d.ts", "../shared"],

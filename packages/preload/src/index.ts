@@ -1,8 +1,8 @@
 /**
  * @module preload
  */
-export {sha256sum} from './nodeCrypto';
-export {versions} from './versions';
 export {invoke, send} from './danger-ipc';
-export {createWindow, changeWindowContentProtection} from './window';
-export {extractText, canProcessOCRForLanguage, getAvailableOCRLanguage} from './ocr';
+export {sha256sum} from './nodeCrypto';
+export {canProcessOCRForLanguage, extractText, getAvailableOCRLanguage} from './ocr';
+export {versions} from './versions';
+export {changeWindowContentProtection, createWindow} from './window';

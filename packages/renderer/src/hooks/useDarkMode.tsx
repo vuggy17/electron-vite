@@ -1,5 +1,5 @@
-import {createContext, useContext} from 'react';
 import hookExternal from 'beautiful-react-hooks/useDarkMode';
+import {createContext, useContext} from 'react';
 export const DarkModeContext = createContext({
   isDarkMode: false,
   toggle: () => {

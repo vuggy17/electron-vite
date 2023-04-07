@@ -24,12 +24,19 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ macos-latest, ubuntu-latest, windows-latest ]
+        os: [windows-latest ]
 
     runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup window SDK
+        uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.11
+        with:
+          sdk-version: 22621
+      - name: Copy platform file to sdk location
+        run: powershell -File .\\scripts\\copy-sdk-file.ps1
 
       - uses: actions/setup-node@v3
         with:

@@ -1,5 +1,7 @@
-import logger from '/@/utils/logger';
 import {app} from 'electron';
+
+import logger from '/@/utils/logger';
+
 import WindowedModule from './window';
 
 export default class AppModule extends WindowedModule {
@@ -8,7 +10,7 @@ export default class AppModule extends WindowedModule {
    * @param window main window instance
    * @param _config
    */
-  constructor(window: Electron.BrowserWindow, _config?: any) {
+  constructor(window: Electron.BrowserWindow) {
     super(window);
   }
 

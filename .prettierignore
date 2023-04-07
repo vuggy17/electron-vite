@@ -6,5 +6,7 @@ package.json
 package-lock.json
 .electron-vendors.cache.json
 
+packages/externals
+
 .github
 .idea

@@ -1,9 +1,10 @@
-import SettingPage from './pages/setting';
-import MenuPage from './pages/menu';
-import DiscoverPage from './pages/discover';
-import AnnouncementPage from './pages/announcement';
-import {useState} from 'react';
 import {Layout, Space, Typography} from 'antd';
+import {useState} from 'react';
+
+import AnnouncementPage from './pages/announcement';
+import DiscoverPage from './pages/discover';
+import MenuPage from './pages/menu';
+import SettingPage from './pages/setting';
 
 const routers = [
   {
@@ -41,12 +42,15 @@ export default function Routes({onPageSelected}: Props) {
       console.warn(`Page ${path} not found`);
       return (
         <Layout>
-            <Space direction="vertical" align='center'>
-              <Typography.Text>Page not found</Typography.Text>
-              <Typography.Link onClick={() => setSelectedPath(DISCOVER_PATH)}>
-                Take me back
-              </Typography.Link>
-            </Space>
+          <Space
+            direction="vertical"
+            align="center"
+          >
+            <Typography.Text>Page not found</Typography.Text>
+            <Typography.Link onClick={() => setSelectedPath(DISCOVER_PATH)}>
+              Take me back
+            </Typography.Link>
+          </Space>
         </Layout>
       );
     }

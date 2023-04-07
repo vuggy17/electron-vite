@@ -1,4 +1,5 @@
 import {ipcRenderer} from 'electron';
+
 import Channels from '../../shared/lib/ipc-channels';
 
 export async function createWindow(name: string) {
