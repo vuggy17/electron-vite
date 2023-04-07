@@ -1,2 +1,2 @@
-export * from './setting';
 export * from './language';
+export * from './setting';

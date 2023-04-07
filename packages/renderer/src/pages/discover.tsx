@@ -1,6 +1,4 @@
 import {Button, Layout, Space} from 'antd';
-import React from 'react';
-
 interface Props {
   onPageSelected: (pagePath: string) => void;
 }

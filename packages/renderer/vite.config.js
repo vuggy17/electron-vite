@@ -1,9 +1,11 @@
 /* eslint-env node */
 
-import {chrome} from '../../.electron-vendors.cache.json';
+import {join} from 'node:path';
+
 import react from '@vitejs/plugin-react';
 import {renderer} from 'unplugin-auto-expose';
-import {join} from 'node:path';
+
+import {chrome} from '../../.electron-vendors.cache.json';
 import {injectAppVersion} from '../../version/inject-app-version-plugin.mjs';
 
 const ioc = require.resolve('tsyringe/dist/esm2015/index.js');

@@ -1,6 +1,8 @@
 import {ipcMain} from 'electron';
-import WindowedModule from './window';
+
 import Channels from '#shared/lib/ipc-channels';
+
+import WindowedModule from './window';
 
 export default class ContentProtectionModule extends WindowedModule {
   async load() {

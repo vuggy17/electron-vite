@@ -9,26 +9,13 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "#preload": [
-        "../preload/src/index"
-      ],
-      "#preload/*": [
-        "../preload/src/*"
-      ]
+      "#preload": ["../preload/src/index"],
+      "#preload/*": ["../preload/src/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "../preload/**/*.ts",
-    "../../types/**/*.d.ts"
-  ],
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "include": ["src/**/*.ts", "../preload/**/*.ts", "../../types/**/*.d.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

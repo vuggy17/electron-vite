@@ -1,7 +1,9 @@
 import {dialog, ipcMain} from 'electron';
-import {Module} from '../modules';
+
 import {createOverlayWindow} from '/@/windows/overlayWindow';
 import Channels from '#shared/lib/ipc-channels';
+
+import {Module} from '../modules';
 
 export default class WindowManager extends Module {
   windows: Record<symbol, Electron.BrowserWindow>;

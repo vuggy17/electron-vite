@@ -6,6 +6,6 @@
 //see:https://github.com/microsoft/tsyringe/issues/180
 import '@abraham/reflection';
 
-export * from './ports';
 export * from './core/entities';
 export * from './core/services';
+export * from './ports';

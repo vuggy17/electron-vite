@@ -1,8 +1,8 @@
-import React from 'react';
-import type { Language } from '../features/detect-text';
-import useLanguage from '../features/detect-text';
-import {Button, Card, Col, Row, Select, Typography} from 'antd';
 import {ReloadOutlined} from '@ant-design/icons';
+import {Button, Card, Col, Row, Select, Typography} from 'antd';
+
+import type {Language} from '../features/detect-text';
+import useLanguage from '../features/detect-text';
 
 export default function LanguageSelector() {
   const {sourceLangs, refreshSourceLangs} = useLanguage();
@@ -17,7 +17,7 @@ export default function LanguageSelector() {
         <Card>
           <Typography.Title level={3}>Detect language from</Typography.Title>
           <Select
-          className='w-full'
+            className="w-full"
             defaultActiveFirstOption={true}
             options={sourceLangs.map(lang => ({label: lang.name, value: lang.code}))}
             onChange={onSourceLangChange}

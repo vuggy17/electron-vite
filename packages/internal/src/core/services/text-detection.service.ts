@@ -1,6 +1,7 @@
-import type {Language} from './../entities/language';
-import type {TextDetectionPort} from '../../ports/text-detection';
 import {extractText, getAvailableOCRLanguage} from '#preload';
+
+import type {TextDetectionPort} from '../../ports/text-detection';
+import type {Language} from './../entities/language';
 
 export class TextDetectionService implements TextDetectionPort {
   async getSupportedLanguages(): Promise<Language[]> {
