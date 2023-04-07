@@ -12,39 +12,22 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "/@/*": [
-        "./src/*"
-      ],
-      "#shared/*": [
-        "../shared/*",
-      ],
-      "#internal/*": [
-        "../internal/src/*",
-      ],
-      "#preload": [
-        "../preload/src/index"
-      ],
+      "/@/*": ["./src/*"],
+      "#shared/*": ["../shared/*"],
+      "#internal/*": ["../internal/src/*"],
+      "#preload": ["../preload/src/index"]
     },
-    "lib": [
-      "ESNext",
-      "dom",
-      "dom.iterable"
-    ]
+    "lib": ["ESNext", "dom", "dom.iterable"]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "../../types/**/*.d.ts",
     "../shared/**/*.ts",
-    "../internal/**/*.ts",
+    "../internal/**/*.ts"
   ],
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

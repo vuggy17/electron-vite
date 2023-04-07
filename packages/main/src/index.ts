@@ -1,16 +1,19 @@
-import logger from '/@/utils/logger';
 import '@abraham/reflection';
-import {app, BrowserWindow} from 'electron';
+import './security-restrictions';
+
 import {join} from 'node:path';
 import {platform} from 'node:process';
 
+import {app, BrowserWindow} from 'electron';
+
+import logger from '/@/utils/logger';
+import {createOverlayWindow} from '/@/windows/overlayWindow';
+
 import {CapturerModule, ContentProtectionModule, OcrModule} from './modules';
 import AppModule from './modules/app';
-import './security-restrictions';
 import * as ModuleManagers from './utils/module-manager';
 import WindowManager from './utils/window-manager';
 import {restoreOrCreateMainWindow} from './windows/mainWindow';
-import {createOverlayWindow} from '/@/windows/overlayWindow';
 /**
  * Shout down background process if all windows was closed
  */
@@ -123,7 +126,7 @@ if (import.meta.env.PROD) {
       const autoUpdater =
         module.autoUpdater ||
         // @ts-expect-error Hotfix for https://github.com/electron-userland/electron-builder/issues/7338
-        (module.default.autoUpdater as typeof module['autoUpdater']);
+        (module.default.autoUpdater as (typeof module)['autoUpdater']);
       return autoUpdater.checkForUpdatesAndNotify();
     })
     .catch(e => logger.error('Failed check and install updates:', e));

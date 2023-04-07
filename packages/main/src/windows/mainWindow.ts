@@ -1,6 +1,7 @@
-import {app, BrowserWindow} from 'electron';
 import {join} from 'node:path';
 import {URL} from 'node:url';
+
+import {app, BrowserWindow} from 'electron';
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({

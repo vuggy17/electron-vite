@@ -1,7 +1,9 @@
 import type {DesktopCapturerSource} from 'electron';
 import {desktopCapturer, ipcMain} from 'electron';
-import Module from './base-module';
+
 import Channels from '#shared/lib/ipc-channels';
+
+import Module from './base-module';
 
 export default class Capturer extends Module {
   async load() {

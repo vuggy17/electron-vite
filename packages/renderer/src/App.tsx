@@ -1,9 +1,11 @@
 import 'antd/dist/reset.css';
 import './App.css';
-import ThemeProvider from './Theme';
+
 import {Card, Layout, Tabs} from 'antd';
-import useTabs from './hooks/useTabs';
+
 import {DarkModeProvider} from './hooks/useDarkMode';
+import useTabs from './hooks/useTabs';
+import ThemeProvider from './Theme';
 
 const App = () => {
   const {onChange, activeTabKey, availableTabs, onEdit} = useTabs();

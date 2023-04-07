@@ -15,7 +15,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
   "ignorePatterns": ["node_modules/**", "**/dist/**", "**packages/externals/**"],
   "rules": {
     "@typescript-eslint/no-unused-vars": [
@@ -46,6 +46,8 @@
       {
         "avoidEscape": true
       }
-    ]
+    ],
+    "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
+    "simple-import-sort/exports": "error"
   }
 }

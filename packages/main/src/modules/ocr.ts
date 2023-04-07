@@ -1,15 +1,16 @@
-import {Language as WinrtLanguage} from 'windows.globalization';
-import {OcrEngine} from 'windows.media.ocr';
-
 // TODO: remove this when we actually implement the ocr module
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type {IpcMainInvokeEvent} from 'electron';
 import {ipcMain} from 'electron';
-import Module from './base-module';
-import Channels from '#shared/lib/ipc-channels';
+import {Language as WinrtLanguage} from 'windows.globalization';
+import {OcrEngine} from 'windows.media.ocr';
+
 import logger from '/@/utils/logger';
-import {WinrtParser} from '../utils/winrt-adapter';
+import Channels from '#shared/lib/ipc-channels';
+
 import type {Language} from '../../../internal/src/core/entities';
+import {WinrtParser} from '../utils/winrt-adapter';
+import Module from './base-module';
 
 export default class OcrModule extends Module {
   async load() {
