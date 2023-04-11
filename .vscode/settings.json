@@ -16,7 +16,16 @@
     "packages/main": false,
     "buildResources": true
   },
-  "cSpell.words": ["Falourd", "Guillaume", "pnpm", "tailwindcss", "tsyringe", "typecheck", "Winrt"],
+  "cSpell.words": [
+    "Falourd",
+    "Guillaume",
+    "pnpm",
+    "Suspensesed",
+    "tailwindcss",
+    "tsyringe",
+    "typecheck",
+    "Winrt"
+  ],
   "explorerExclude.backup": {},
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "editor.defaultFormatter": "esbenp.prettier-vscode"
