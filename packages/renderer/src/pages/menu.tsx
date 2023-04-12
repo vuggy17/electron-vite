@@ -8,9 +8,9 @@ import {DetectTextController} from '../features/detect-text/controller';
 const LanguageSelector = lazy(() => import('../components/lang-selector'));
 
 export default function MenuPage() {
-  const getText = async () => {
+  const getText = async (image: File) => {
     try {
-      const result = await new DetectTextController().detectFromImage('fake image', 'en');
+      const result = await new DetectTextController().detectFromImage(image, 'en');
       console.log(result);
     } catch (error) {
       console.error('Error caught: ', error);
@@ -21,25 +21,19 @@ export default function MenuPage() {
     <Layout className="h-full flex-1">
       <PageHeader />
       <div className="px-[50px] pt-16 pb-36">
-        {/* <Typography.Title
-          level={1}
-          className="mt-4 invisible"
-        >
-          React App
-        </Typography.Title> */}
         <Space
           direction="vertical"
           className="w-full"
           size={'large'}
         >
           <Suspense fallback={<SuspensesedLangSelector />}>
-            <LanguageSelector />
+            <LanguageSelector
+              onFileDrop={file => {
+                console.log(file);
+                getText(file);
+              }}
+            />
           </Suspense>
-
-          {/* <Space direction="vertical">
-            <Button>create new window</Button>
-            <Button onClick={getText}>extract text from image</Button>
-          </Space> */}
         </Space>
       </div>
     </Layout>

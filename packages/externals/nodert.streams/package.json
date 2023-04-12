@@ -3,6 +3,7 @@
   "version": "0.2.5",
   "description": "Turn WinRT streams to node.js streams",
   "main": "index.js",
+  "typings": "index.d.ts",
   "os": [
     "win32"
   ],

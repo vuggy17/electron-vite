@@ -2,7 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type {IpcMainInvokeEvent} from 'electron';
 import {ipcMain} from 'electron';
+import {toIBuffer} from 'nodert-streams';
 import {Language as WinrtLanguage} from 'windows.globalization';
+import {BitmapAlphaMode, BitmapPixelFormat, SoftwareBitmap} from 'windows.graphics.imaging';
+import type {OcrLine, OcrResult} from 'windows.media.ocr';
 import {OcrEngine} from 'windows.media.ocr';
 
 import logger from '/@/utils/logger';
@@ -28,7 +31,7 @@ export default class OcrModule extends Module {
    * @param data
    * @param language
    */
-  private async extractText(_e: IpcMainInvokeEvent, data: string, language: string) {
+  private async extractText(_e: IpcMainInvokeEvent, data: ArrayBuffer, language: string) {
     const languageSupported = await this.hasSupport(_e, language);
     if (!languageSupported) {
       throw new Error('Language not supported');
@@ -55,9 +58,35 @@ export default class OcrModule extends Module {
     throw new Error('not implemented yet');
   }
 
-  private async extractTextFromImage(image: string, lang: string): Promise<string> {
+  private recognizePromise(winrtBitmap: SoftwareBitmap, lang: string) {
+    const engine = OcrEngine.tryCreateFromLanguage(new WinrtLanguage(lang));
+  }
+
+  private async extractTextFromImage(image: ArrayBuffer, lang: string): Promise<string> {
     const language = new WinrtLanguage('en-US');
     console.log(OcrEngine.isLanguageSupported(language));
+    const bitmap = await this.getWinRTBitmap(
+      await this.toWinrtBuffer(this.toBuffer(image)),
+      400,
+      500,
+    );
+
+    return new Promise((resolve, reject) => {
+      const engine = OcrEngine.tryCreateFromLanguage(new WinrtLanguage(lang));
+
+      engine.recognizeAsync(bitmap, (err, nativeResult: OcrResult) => {
+        const nativeLines = nativeResult.lines as any; // c# vector: Windows::Foundation::Collections:IVectorView
+        const texts: string[] = [];
+
+        for (let index = 0; index < nativeLines.size; index++) {
+          const element: OcrLine = nativeLines[index];
+          texts.push(element.text.toString());
+        }
+        resolve(texts.join(';'));
+      });
+    });
+
+    const internalResult = WinrtParser.parseList(result);
     return 'Google Translate is an online translation tool developed by Google. It provides website interfaces, mobile apps for Android and iOS operating systems, and application programming interfaces that help developers build web browser extensions and software applications.';
   }
 
@@ -65,7 +94,7 @@ export default class OcrModule extends Module {
    *
    * @param image base64 string of the image
    */
-  public async tryExtract(image: string, lang: string): Promise<string> {
+  public async tryExtract(image: ArrayBuffer, lang: string): Promise<string> {
     try {
       const currentText = await this.extractTextFromImage(image, lang);
       if (this.checkDiff(currentText) <= this.DIFF_THRESHOLD) {
@@ -87,5 +116,41 @@ export default class OcrModule extends Module {
       WinrtParser.parseLanguage(item as WinrtLanguage),
     );
     return lang;
+  }
+
+  /**
+   *
+   * @param iBufferInstance winrt IBuffer instance https://learn.microsoft.com/en-us/uwp/api/windows.storage.streams.ibuffer?view=winrt-22621
+   * @returns winrt SoftwareBitmap
+   */
+  async getWinRTBitmap(
+    iBufferInstance: object,
+    width: number,
+    height: number,
+  ): Promise<SoftwareBitmap> {
+    return SoftwareBitmap.createCopyFromBuffer(
+      iBufferInstance,
+      BitmapPixelFormat.rgba8,
+      width,
+      height,
+      BitmapAlphaMode.premultiplied,
+    );
+  }
+
+  // async toNodeJsBuffer(source: Uint8ClampedArray) {
+  //   return Buffer.from(source.buffer, source.byteOffset, source.byteLength);
+  // }
+  // convert js array buffer to nodejs buffer
+  toBuffer(arrayBuffer: ArrayBuffer) {
+    const buffer = Buffer.alloc(arrayBuffer.byteLength);
+    const view = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < buffer.length; ++i) {
+      buffer[i] = view[i];
+    }
+    return buffer;
+  }
+
+  async toWinrtBuffer(source: Buffer) {
+    return toIBuffer(source);
   }
 }

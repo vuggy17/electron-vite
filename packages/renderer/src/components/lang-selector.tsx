@@ -1,19 +1,22 @@
-import {generate} from '@ant-design/colors';
 import {DropboxCircleFilled, SendOutlined} from '@ant-design/icons';
 import {Button, Col, ConfigProvider, Row, Select, Skeleton, Space, Typography, Upload} from 'antd';
 
 const {Dragger} = Upload;
 import useLanguage from '../features/detect-text';
 
-export default function LanguageSelector() {
-  const colors = generate('#3283ff', {
-    theme: 'default',
-  });
-  console.log(colors);
+interface Props {
+  onFileDrop: (file: File) => void;
+}
+
+export default function LanguageSelector({onFileDrop}: Props) {
   const {sourceLangs, refreshSourceLangs} = useLanguage();
 
   const onSourceLangChange = (value: string) => {
     console.log(`selected ${value}`);
+  };
+
+  const onFileDropped = (file: File) => {
+    console.log('Dropped files', file);
   };
 
   if (sourceLangs.length === 0) return null;
@@ -76,14 +79,8 @@ export default function LanguageSelector() {
                   >
                     <Select
                       size="large"
-                      // open={true}
                       className="w-full"
-                      // popupClassName="rounded-xl"
                       defaultValue={sourceLangs[0].code}
-                      // options={[
-                      //   ...sourceLangs.map(lang => ({label: lang.name, value: lang.code})),
-                      //   ...sourceLangs.map(lang => ({label: lang.name, value: lang.code})),
-                      // ]}
                       onChange={onSourceLangChange}
                     >
                       {sourceLangs.map(lang => (
@@ -124,7 +121,20 @@ export default function LanguageSelector() {
             <div className="bg-slate-600 h-16"></div>
           </div>
           <div className="rounded-b-[32px]  bg-[#1b1b1f] p-10 rounded-t-none py-8 mt-[2px]">
-            <Dragger>
+            <Dragger
+            accept='image/*'
+              multiple={false}
+              beforeUpload={() => false}
+              itemRender={() => null}
+              onChange={info => {
+                const file = info.file;
+                if (!file) {
+                  console.warn('No file');
+                  return;
+                }
+                onFileDropped(file as unknown as File);
+              }}
+            >
               <Space
                 direction="vertical"
                 align="center"

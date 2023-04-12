@@ -8,8 +8,9 @@ export class TextDetectionService implements TextDetectionPort {
     const langs = await getAvailableOCRLanguage();
     return langs;
   }
-  async getTextFromImage(image: string, language: Language): Promise<string> {
-    return extractText(image, language.code);
+  async getTextFromImage(image: File, language: Language): Promise<string> {
+    const fileBuff = await image.arrayBuffer();
+    return extractText(fileBuff, language.code);
   }
   getTargetId(): Promise<string> {
     throw new Error('Method not implemented.');

@@ -2,7 +2,7 @@ import {ipcRenderer} from 'electron';
 
 import Channels from '../../shared/lib/ipc-channels';
 
-export async function extractText(data: string, language: string) {
+export async function extractText(data: ArrayBuffer, language: string) {
   return ipcRenderer.invoke(Channels.OCR_EXTRACT, data, language);
 }
 

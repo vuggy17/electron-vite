@@ -21,7 +21,7 @@ export class DetectTextController {
     return langs.map(LanguageAdapter.createLanguageFromInternal);
   }
 
-  async detectFromImage(image: string, langCode: string) {
+  async detectFromImage(image: File, langCode: string) {
     const language = LanguageAdapter.createLanguageFromCode(langCode);
     const texts = await this.textDetector.getTextFromImage(image, language);
     // do some format stuff
