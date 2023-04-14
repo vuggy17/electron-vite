@@ -7,16 +7,16 @@ function parseLanguage(input: WinrtLanguage): Language {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function parseList<T>(list: any, parseFn: (i: unknown) => T): T[] {
+function parseCollection<T>(collection: any, parseFn: (i: any) => T): T[] {
   const result: T[] = [];
-  for (let i = 0; i < list.size; i++) {
-    const item = list[i];
+  for (let i = 0; i < collection.size; i++) {
+    const item = collection[i];
     result.push(parseFn(item));
   }
   return result;
 }
 
 export const WinrtParser = {
-  parseList,
+  parseCollection,
   parseLanguage,
 };

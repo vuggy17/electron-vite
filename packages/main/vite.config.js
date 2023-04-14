@@ -35,7 +35,13 @@ const config = {
       output: {
         entryFileNames: '[name].cjs',
       },
-      external: ['windows.media.ocr', 'windows.globalization'],
+      external: [
+        'nodert.streams',
+        'windows.media.ocr',
+        'windows.globalization',
+        'windows.graphics.imaging',
+        'windows.storage.streams',
+      ],
     },
     emptyOutDir: true,
     reportCompressedSize: false,

@@ -22,10 +22,10 @@ export class DetectTextController {
   }
 
   async detectFromImage(image: File, langCode: string) {
-    const language = LanguageAdapter.createLanguageFromCode(langCode);
-    const texts = await this.textDetector.getTextFromImage(image, language);
-    // do some format stuff
-    return 'formatted' + texts;
+    // Need to convert image to buffer using canvas since original File.buffer is larger than buffer size of Window SoftwareBitmap can handle
+
+    const texts = await this.textDetector.getTextFromImage(image, langCode);
+    return texts;
   }
 
   async getAvailableLanguage() {

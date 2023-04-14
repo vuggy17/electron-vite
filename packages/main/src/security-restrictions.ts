@@ -1,7 +1,11 @@
 import {URL} from 'node:url';
 
 import type {Session} from 'electron';
+import {BrowserWindow} from 'electron';
+import {dialog} from 'electron';
 import {app, shell} from 'electron';
+
+import logger from './utils/logger';
 
 /**
  * Union for all existing permissions in electron
@@ -17,7 +21,12 @@ type Permission = Parameters<
  */
 const ALLOWED_ORIGINS_AND_PERMISSIONS = new Map<string, Set<Permission>>(
   import.meta.env.DEV && import.meta.env.VITE_DEV_SERVER_URL
-    ? [[new URL(import.meta.env.VITE_DEV_SERVER_URL).origin, new Set()]]
+    ? [
+        [
+          new URL(import.meta.env.VITE_DEV_SERVER_URL).origin,
+          new Set(['clipboard-sanitized-write']),
+        ],
+      ]
     : [],
 );
 
@@ -66,6 +75,12 @@ app.on('web-contents-created', (_, contents) => {
     const {origin} = new URL(webContents.getURL());
 
     const permissionGranted = !!ALLOWED_ORIGINS_AND_PERMISSIONS.get(origin)?.has(permission);
+
+    // allow all permissions in production mode
+    if (import.meta.env.PROD) {
+      callback(true);
+      return;
+    }
     callback(permissionGranted);
 
     if (!permissionGranted && import.meta.env.DEV) {

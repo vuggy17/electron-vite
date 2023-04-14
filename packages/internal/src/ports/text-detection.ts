@@ -1,7 +1,7 @@
 import type {Language} from '../core/entities';
 
 export interface TextDetectionPort {
-  getTextFromImage(image: File, language: Language): Promise<string>;
+  getTextFromImage(image: File, language: string): Promise<string>;
   /**
    * get the id of window for application to stream the image to
    */

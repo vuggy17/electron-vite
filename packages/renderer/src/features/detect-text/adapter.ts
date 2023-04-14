@@ -2,7 +2,7 @@ import {Language as InternalLanguage} from '../../../../internal/src/core/entiti
 import type {Language} from './types';
 
 function createLanguageFromCode(code: string): InternalLanguage {
-  if (code == 'en') {
+  if (code == 'en-US') {
     return new InternalLanguage('en', 'English');
   }
   throw new Error('Invalid language code, no language with code: ' + code);

@@ -15,10 +15,6 @@ export default function LanguageSelector({onFileDrop}: Props) {
     console.log(`selected ${value}`);
   };
 
-  const onFileDropped = (file: File) => {
-    console.log('Dropped files', file);
-  };
-
   if (sourceLangs.length === 0) return null;
 
   return (
@@ -122,7 +118,7 @@ export default function LanguageSelector({onFileDrop}: Props) {
           </div>
           <div className="rounded-b-[32px]  bg-[#1b1b1f] p-10 rounded-t-none py-8 mt-[2px]">
             <Dragger
-            accept='image/*'
+              accept="image/*"
               multiple={false}
               beforeUpload={() => false}
               itemRender={() => null}
@@ -132,7 +128,7 @@ export default function LanguageSelector({onFileDrop}: Props) {
                   console.warn('No file');
                   return;
                 }
-                onFileDropped(file as unknown as File);
+                onFileDrop(file as unknown as File);
               }}
             >
               <Space
