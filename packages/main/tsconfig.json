@@ -7,14 +7,32 @@
     "skipLibCheck": true,
     "strict": true,
     "isolatedModules": true,
-    "types": ["node"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "node"
+    ],
     "baseUrl": ".",
     "paths": {
-      "/@/*": ["./src/*"],
-      "#shared/*": ["../shared/*"],
-      "#preload": ["../preload/src/index"]
+      "/@/*": [
+        "./src/*"
+      ],
+      "#shared/*": [
+        "../shared/*"
+      ],
+      "#preload": [
+        "../preload/src/index"
+      ]
     }
   },
-  "include": ["src/**/*.ts", "../../types/**/*.d.ts", "../shared/**/*.ts"],
-  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
+  "include": [
+    "src/**/*.ts",
+    "../../types/**/*.d.ts",
+    "../shared/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }

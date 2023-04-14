@@ -63,6 +63,7 @@
     "@electron/rebuild": "^3.2.10",
     "antd": "^5.3.3",
     "beautiful-react-hooks": "^4.3.0",
+    "electron-store": "^8.1.0",
     "electron-updater": "5.3.0",
     "nodert.streams": "file:packages/externals/nodert.streams",
     "react": "^18.2.0",

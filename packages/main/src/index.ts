@@ -5,15 +5,17 @@ import {join} from 'node:path';
 import {platform} from 'node:process';
 
 import {app, BrowserWindow} from 'electron';
+import {container} from 'tsyringe';
 
 import logger from '/@/utils/logger';
-import {createOverlayWindow} from '/@/windows/overlayWindow';
 
 import {CapturerModule, ContentProtectionModule, OcrModule} from './modules';
 import AppModule from './modules/app';
+import {SettingModule} from './modules/setting';
 import * as ModuleManagers from './utils/module-manager';
 import WindowManager from './utils/window-manager';
-import {restoreOrCreateMainWindow} from './windows/mainWindow';
+import {restoreOrCreateMainWindow} from './windows/main';
+import {createOverlayWindow} from './windows/overlay';
 /**
  * Shout down background process if all windows was closed
  */
@@ -43,13 +45,14 @@ app
       show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
       webPreferences: {
         nodeIntegration: false,
+        devTools: false,
         contextIsolation: true,
         sandbox: false, // Sandbox disabled because the demo of preload script depend on the Node.js api
         webviewTag: false, // The webview tag is not recommended. Consider alternatives like an iframe or Electron's BrowserView. @see https://www.electronjs.org/docs/latest/api/webview-tag#warning
         preload: join(app.getAppPath(), 'packages/preload/dist/index.cjs'),
       },
     });
-    mainWindow.setSize(1024, 768);
+    mainWindow.setSize(1500, 1024);
     /**
      * If the 'show' property of the BrowserWindow's constructor is omitted from the initialization options,
      * it then defaults to 'true'. This can cause flickering as the window loads the html content,
@@ -69,7 +72,7 @@ app
 
     // Init modules
     ModuleManagers.init(
-      new AppModule(mainWindow),
+      new AppModule(mainWindow, container.resolve(SettingModule)),
       new WindowManager(),
       new ContentProtectionModule(translateWindow),
       new OcrModule(),
@@ -127,7 +130,7 @@ if (import.meta.env.PROD) {
       const autoUpdater =
         module.autoUpdater ||
         // @ts-expect-error Hotfix for https://github.com/electron-userland/electron-builder/issues/7338
-        (module.default.autoUpdater as (typeof module)['autoUpdater']);
+        (module.default.autoUpdater as typeof module['autoUpdater']);
       return autoUpdater.checkForUpdatesAndNotify();
     })
     .catch(e => logger.error('Failed check and install updates:', e));

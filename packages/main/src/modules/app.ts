@@ -2,6 +2,7 @@ import {app} from 'electron';
 
 import logger from '/@/utils/logger';
 
+import type {SettingModule} from './setting';
 import WindowedModule from './window';
 
 export default class AppModule extends WindowedModule {
@@ -10,12 +11,15 @@ export default class AppModule extends WindowedModule {
    * @param window main window instance
    * @param _config
    */
-  constructor(window: Electron.BrowserWindow) {
+  constructor(window: Electron.BrowserWindow, private settingModule: SettingModule) {
     super(window);
   }
 
   async load(): Promise<void> {
     this.ensureSingleInstance();
+    await this.settingModule.load();
+
+    console.log(this.settingModule.setting.launchPosition);
   }
 
   ensureSingleInstance(): void {
