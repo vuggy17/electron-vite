@@ -2,14 +2,15 @@ import {Layout, Space, Typography} from 'antd';
 import {useState} from 'react';
 
 import AnnouncementPage from './pages/announcement';
+import ChatPage from './pages/chat';
 import DiscoverPage from './pages/discover';
-import MenuPage from './pages/menu';
+import OcrPage from './pages/ocr';
 import SettingPage from './pages/setting';
 
 const routers = [
   {
     path: 'menu',
-    element: <MenuPage />,
+    element: <OcrPage />,
   },
   {
     path: 'setting',
@@ -18,6 +19,10 @@ const routers = [
   {
     path: 'announcement',
     element: <AnnouncementPage />,
+  },
+  {
+    path: 'chat',
+    element: <ChatPage />,
   },
 ];
 

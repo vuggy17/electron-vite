@@ -29,12 +29,13 @@ export default class AppModule extends WindowedModule {
      *
      * @see https://github.com/electron/electron/issues/25012 for the afford mentioned issue.
      */
-    this.window.on('ready-to-show', () => {
-      // hot reload
-      if (import.meta.env.DEV) {
-        this.window.removeAllListeners();
-      }
 
+    // hot reload
+    if (import.meta.env.DEV) {
+      this.window.removeAllListeners();
+    }
+
+    this.window.on('ready-to-show', () => {
       const {x, y} = this.settingModule.setting.launchPosition;
       this.window.setPosition(x, y);
       this.window?.show();

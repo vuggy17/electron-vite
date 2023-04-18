@@ -5,7 +5,7 @@ import {ipcMain} from 'electron';
 import {toIBuffer} from 'nodert.streams';
 import {Language as WinrtLanguage} from 'windows.globalization';
 import {BitmapAlphaMode, BitmapPixelFormat, SoftwareBitmap} from 'windows.graphics.imaging';
-import type {OcrLine, OcrResult} from 'windows.media.ocr';
+import type {OcrResult} from 'windows.media.ocr';
 import {OcrEngine} from 'windows.media.ocr';
 
 import logger from '/@/utils/logger';

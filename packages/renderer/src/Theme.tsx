@@ -11,13 +11,22 @@ export default function ThemeProvider({children}: Props) {
   return (
     <ConfigProvider
       theme={{
-        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+        algorithm: false ? darkAlgorithm : defaultAlgorithm,
         token: {
-          colorPrimary: '#335cff',
-          colorBgContainer: '#1b1b1f',
-          colorText: '#f1f1f1',
-          colorBgLayout: '#111116',
-          fontSize: 16,
+          colorPrimary: '#128C7E',
+          colorText: '#010101',
+        },
+        components: {
+          Select: {
+            borderRadiusLG: 24,
+            controlHeight: 40, // option height
+            controlHeightLG: 48, // input height
+            // controlItemBgActive: '#D1E4E8',
+            controlPaddingHorizontal: 20,
+          },
+          Input: {
+            controlHeightLG: 48,
+          },
         },
       }}
     >

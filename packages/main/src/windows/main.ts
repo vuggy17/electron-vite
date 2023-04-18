@@ -9,13 +9,15 @@ async function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      devTools: true,
       sandbox: false, // Sandbox disabled because the demo of preload script depend on the Node.js api
       webviewTag: false, // The webview tag is not recommended. Consider alternatives like an iframe or Electron's BrowserView. @see https://www.electronjs.org/docs/latest/api/webview-tag#warning
       preload: join(app.getAppPath(), 'packages/preload/dist/index.cjs'),
     },
   });
 
-  browserWindow.setSize(1024, 768);
+  // browserWindow.setSize(1024, 768);
+  // browserWindow.setSize(600, 400);
   // /**
   //  * If the 'show' property of the BrowserWindow's constructor is omitted from the initialization options,
   //  * it then defaults to 'true'. This can cause flickering as the window loads the html content,

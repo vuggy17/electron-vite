@@ -24,7 +24,7 @@ const App = () => {
               className="h-full first:[&>.ant-card-body]:p-0"
             >
               <Tabs
-                className="h-full modified-tabs"
+                className="h-full"
                 type="editable-card"
                 onChange={onChange}
                 activeKey={activeTabKey}

@@ -1,4 +1,4 @@
-import {Layout, message, Space} from 'antd';
+import {ConfigProvider, Layout, message, Space, theme} from 'antd';
 import {lazy, Suspense} from 'react';
 
 import {SuspensesedLangSelector} from '../components/lang-selector';
@@ -7,13 +7,13 @@ import {DetectTextController} from '../features/detect-text/controller';
 
 const LanguageSelector = lazy(() => import('../components/lang-selector'));
 
-export default function MenuPage() {
+export default function OcrPage() {
   const [messageApi, contextHolder] = message.useMessage();
 
   const getText = async (image: File) => {
     try {
       const result = await new DetectTextController().detectFromImage(image, 'en-US');
-      messageApi.success('Text copied to clipboard 🫡');
+      messageApi.success('Text extracted & copied to clipboard 🫡');
 
       // TODO: check if clipboard is supported in production
       navigator.clipboard.writeText(result);
@@ -24,7 +24,7 @@ export default function MenuPage() {
   };
 
   return (
-    <Layout className="h-full flex-1">
+    <Layout className="h-full flex-1 bg-white">
       {contextHolder}
       <PageHeader />
       <div className="px-[50px] pt-16 pb-36">

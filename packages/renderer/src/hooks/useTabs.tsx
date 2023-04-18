@@ -1,7 +1,7 @@
 import {HomeFilled} from '@ant-design/icons';
 import React, {useRef, useState} from 'react';
 
-import MenuPage from '../pages/menu';
+import EntryPage from '../pages/entry';
 import Routes from '../routes';
 
 type PageTabProps = {
@@ -19,7 +19,7 @@ const defaultTabs = [
         Home
       </div>
     ),
-    children: <MenuPage />,
+    children: <EntryPage />,
     key: '1',
     closable: false,
   },

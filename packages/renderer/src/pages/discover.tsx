@@ -1,4 +1,4 @@
-import {Button, Layout, Space} from 'antd';
+import {Button, Card, Layout, Space, Typography} from 'antd';
 interface Props {
   onPageSelected: (pagePath: string) => void;
 }
@@ -10,26 +10,34 @@ interface Props {
 export default function DiscoverPage({onPageSelected}: Props) {
   return (
     <Layout>
-      <Space>
-        <Space align="center"> Discover a page</Space>
-      </Space>
-      <Space
-        align="center"
-        direction="vertical"
-      >
-        <Button
-          type="link"
-          onClick={() => onPageSelected('setting')}
-        >
-          Open setting
-        </Button>
-        <Button
-          type="link"
-          onClick={() => onPageSelected('announcement')}
-        >
-          See developer announcement
-        </Button>
-      </Space>
+      <Card bordered={false}>
+        <div className="flex w-full justify-center flex-col text-center">
+          <Typography.Title level={3}>Discover a page</Typography.Title>
+          <Space
+            align="center"
+            direction="vertical"
+          >
+            <Button
+              type="link"
+              onClick={() => onPageSelected('setting')}
+            >
+              <Typography.Link>Open setting</Typography.Link>
+            </Button>
+            <Button
+              type="link"
+              onClick={() => onPageSelected('announcement')}
+            >
+              <Typography.Link>See developer announcement </Typography.Link>
+            </Button>
+            <Button
+              type="link"
+              onClick={() => onPageSelected('chat')}
+            >
+              <Typography.Link> Open chat page </Typography.Link>
+            </Button>
+          </Space>
+        </div>
+      </Card>
     </Layout>
   );
 }

@@ -1,11 +1,7 @@
 import {URL} from 'node:url';
 
 import type {Session} from 'electron';
-import {BrowserWindow} from 'electron';
-import {dialog} from 'electron';
 import {app, shell} from 'electron';
-
-import logger from './utils/logger';
 
 /**
  * Union for all existing permissions in electron

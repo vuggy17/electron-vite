@@ -1,5 +1,16 @@
 import {DropboxCircleFilled, SendOutlined} from '@ant-design/icons';
-import {Button, Col, ConfigProvider, Row, Select, Skeleton, Space, Typography, Upload} from 'antd';
+import {
+  Button,
+  Card,
+  Col,
+  ConfigProvider,
+  Row,
+  Select,
+  Skeleton,
+  Space,
+  Typography,
+  Upload,
+} from 'antd';
 
 const {Dragger} = Upload;
 import useLanguage from '../features/detect-text';
@@ -19,12 +30,13 @@ export default function LanguageSelector({onFileDrop}: Props) {
 
   return (
     <div className="relative">
-      <div className="absolute z-10 left-1/2 -ml-[28px] mt-7 p-1 bg-[#111116] rounded-full">
+      <div className="absolute z-10 left-1/2 -ml-[28px] mt-7 p-1 bg-white rounded-full">
         <ConfigProvider
           theme={{
             components: {
               Button: {
                 controlHeightLG: 56,
+                colorBgContainer: '#FFF',
               },
             },
           }}
@@ -34,12 +46,16 @@ export default function LanguageSelector({onFileDrop}: Props) {
             shape="circle"
             size="large"
             icon={<SendOutlined />}
-          ></Button>
+          />
         </ConfigProvider>
       </div>
-      <Row gutter={16}>
-        <Col span={12}>
-          <div className="rounded-[32px] bg-[#1b1b1f] pl-6 pr-14 rounded-b-none pt-7 pb-11">
+      <Row
+        gutter={16}
+        justify="center"
+        align={'top'}
+      >
+        <Col span={9}>
+          <Card className="rounded-[24px] bg-[#F5FAFC] pl-6 pr-14 rounded-b-none pt-7 pb-11">
             <Space
               direction="vertical"
               size={32}
@@ -57,54 +73,29 @@ export default function LanguageSelector({onFileDrop}: Props) {
                   </Typography.Text>
                 </Col>
                 <Col flex="auto">
-                  <ConfigProvider
-                    theme={{
-                      components: {
-                        Select: {
-                          borderRadiusLG: 24,
-                          controlHeight: 50, // option height
-                          controlHeightLG: 56, // input height
-                          paddingContentHorizontal: 48,
-                        },
-                        Input: {
-                          controlHeight: 40,
-                          controlHeightLG: 64,
-                        },
-                      },
-                    }}
+                  <Select
+                    size="large"
+                    className="w-full"
+                    popupClassName="rounded-[12px] px-0 pt-[12px] pb-[16px]"
+                    defaultValue={sourceLangs[0].code}
+                    onChange={onSourceLangChange}
                   >
-                    <Select
-                      size="large"
-                      className="w-full"
-                      defaultValue={sourceLangs[0].code}
-                      onChange={onSourceLangChange}
-                    >
-                      {sourceLangs.map(lang => (
-                        <Select.Option
-                          className="!rounded-lg"
-                          key={lang.code}
-                        >
-                          <Typography.Text>{lang.name}</Typography.Text>
-                        </Select.Option>
-                      ))}
-                      {sourceLangs.map(lang => (
-                        <Select.Option
-                          className="!rounded-lg"
-                          key={lang.code + 21}
-                        >
-                          <Typography.Text>{lang.name}</Typography.Text>
-                        </Select.Option>
-                      ))}
-                      {sourceLangs.map(lang => (
-                        <Select.Option
-                          className="!rounded-lg"
-                          key={lang.code + '2'}
-                        >
-                          <Typography.Text>{lang.name}</Typography.Text>
-                        </Select.Option>
-                      ))}
-                    </Select>
-                  </ConfigProvider>
+                    {sourceLangs.map(lang => (
+                      <Select.Option key={lang.code}>
+                        <Typography.Text>{lang.name}</Typography.Text>
+                      </Select.Option>
+                    ))}
+                    {sourceLangs.map(lang => (
+                      <Select.Option key={lang.code + 21}>
+                        <Typography.Text>{lang.name}</Typography.Text>
+                      </Select.Option>
+                    ))}
+                    {sourceLangs.map(lang => (
+                      <Select.Option key={lang.code + '2'}>
+                        <Typography.Text>{lang.name}</Typography.Text>
+                      </Select.Option>
+                    ))}
+                  </Select>
                 </Col>
               </Row>
               <Typography.Paragraph className="text-lg">
@@ -115,8 +106,8 @@ export default function LanguageSelector({onFileDrop}: Props) {
 
             <div className="h-20 invisible"></div>
             <div className="bg-slate-600 h-16"></div>
-          </div>
-          <div className="rounded-b-[32px]  bg-[#1b1b1f] p-10 rounded-t-none py-8 mt-[2px]">
+          </Card>
+          <Card className="rounded-b-[24px] bg-[#F5FAFC] p-10 rounded-t-none py-8 mt-[2px]">
             <Dragger
               accept="image/*"
               multiple={false}
@@ -148,10 +139,10 @@ export default function LanguageSelector({onFileDrop}: Props) {
                 </div>
               </Space>
             </Dragger>
-          </div>
+          </Card>
         </Col>
-        <Col span={12}>
-          <div className="rounded-[32px] bg-[#1b1b1f] pr-6 pl-14 rounded-b-none pt-7 pb-11">
+        <Col span={9}>
+          <Card className="rounded-[24px] bg-[#F5FAFC] pl-6 pr-14 rounded-b-none pt-7 pb-11">
             <Space
               direction="vertical"
               size={32}
@@ -165,64 +156,33 @@ export default function LanguageSelector({onFileDrop}: Props) {
                     strong
                     className="tracking-tight text-[#646467]"
                   >
-                    To :
+                    From :
                   </Typography.Text>
                 </Col>
                 <Col flex="auto">
-                  <ConfigProvider
-                    theme={{
-                      components: {
-                        Select: {
-                          borderRadiusLG: 24,
-                          controlHeight: 50, // option height
-                          controlHeightLG: 56, // input height
-                          paddingContentHorizontal: 48,
-                        },
-                        Input: {
-                          controlHeight: 40,
-                          controlHeightLG: 64,
-                        },
-                      },
-                    }}
+                  <Select
+                    size="large"
+                    className="w-full"
+                    popupClassName="rounded-[12px] px-0 pt-[12px] pb-[16px]"
+                    defaultValue={sourceLangs[0].code}
+                    onChange={onSourceLangChange}
                   >
-                    <Select
-                      size="large"
-                      // open={true}
-                      className="w-full"
-                      // popupClassName="rounded-xl"
-                      defaultValue={sourceLangs[0].code}
-                      // options={[
-                      //   ...sourceLangs.map(lang => ({label: lang.name, value: lang.code})),
-                      //   ...sourceLangs.map(lang => ({label: lang.name, value: lang.code})),
-                      // ]}
-                      onChange={onSourceLangChange}
-                    >
-                      {sourceLangs.map(lang => (
-                        <Select.Option
-                          className="!rounded-lg"
-                          key={lang.code}
-                        >
-                          <Typography.Text>{lang.name}</Typography.Text>
-                        </Select.Option>
-                      ))}
-                      {sourceLangs.map(lang => (
-                        <Select.Option
-                          className="!rounded-lg"
-                          key={lang.code + 21}
-                        >
-                          <Typography.Text>{lang.name}</Typography.Text>
-                        </Select.Option>
-                      ))}
-                      {sourceLangs.map(lang => (
-                        <Select.Option
-                          className="!rounded-lg"
-                          key={lang.code + '2'}
-                        >
-                          <Typography.Text>{lang.name}</Typography.Text>
-                        </Select.Option>
-                      ))}
-                    </Select>
-                  </ConfigProvider>
+                    {sourceLangs.map(lang => (
+                      <Select.Option key={lang.code}>
+                        <Typography.Text>{lang.name}</Typography.Text>
+                      </Select.Option>
+                    ))}
+                    {sourceLangs.map(lang => (
+                      <Select.Option key={lang.code + 21}>
+                        <Typography.Text>{lang.name}</Typography.Text>
+                      </Select.Option>
+                    ))}
+                    {sourceLangs.map(lang => (
+                      <Select.Option key={lang.code + '2'}>
+                        <Typography.Text>{lang.name}</Typography.Text>
+                      </Select.Option>
+                    ))}
+                  </Select>
                 </Col>
               </Row>
               <Typography.Paragraph className="text-lg">
@@ -233,25 +193,40 @@ export default function LanguageSelector({onFileDrop}: Props) {
 
             <div className="h-20 invisible"></div>
             <div className="bg-slate-600 h-16"></div>
-          </div>
-          <div className="rounded-b-[32px]  bg-[#1b1b1f] p-10 rounded-t-none py-8 mt-[2px]">
-            <Space
-              direction="vertical"
-              align="center"
-              className="w-full"
+          </Card>
+          <Card className="rounded-b-[24px] bg-[#F5FAFC] p-10 rounded-t-none py-8 mt-[2px]">
+            <Dragger
+              accept="image/*"
+              multiple={false}
+              beforeUpload={() => false}
+              itemRender={() => null}
+              onChange={info => {
+                const file = info.file;
+                if (!file) {
+                  console.warn('No file');
+                  return;
+                }
+                onFileDrop(file as unknown as File);
+              }}
             >
-              <Typography.Title level={4}>Drop your documents here!</Typography.Title>
-              {/* open file button */}
-              <div className="rounded-full bg-[#111116] p-[6px] pl-4 flex items-center  gap-4 w-fit">
-                <Typography.Text className="text-base font-medium tracking-wide">
-                  Choose files
-                </Typography.Text>
-                <div className="bg-[#1f1f24] p-2 rounded-full w-14">
-                  <DropboxCircleFilled />
+              <Space
+                direction="vertical"
+                align="center"
+                className="w-full"
+              >
+                <Typography.Title level={4}>Drop your documents here!</Typography.Title>
+                {/* open file button */}
+                <div className="rounded-full bg-[#111116] p-[6px] pl-4 flex items-center  gap-4 w-fit">
+                  <Typography.Text className="text-base font-medium tracking-wide">
+                    Choose files
+                  </Typography.Text>
+                  <div className="bg-[#1f1f24] p-2 rounded-full w-14">
+                    <DropboxCircleFilled />
+                  </div>
                 </div>
-              </div>
-            </Space>
-          </div>
+              </Space>
+            </Dragger>
+          </Card>
         </Col>
       </Row>
     </div>
