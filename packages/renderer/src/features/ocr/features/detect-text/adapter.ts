@@ -1,4 +1,4 @@
-import {Language as InternalLanguage} from '../../../../internal/src/core/entities';
+import {Language as InternalLanguage} from '../../../../../../internal/src/core/entities';
 import type {Language} from './types';
 
 function createLanguageFromCode(code: string): InternalLanguage {

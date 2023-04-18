@@ -15,8 +15,8 @@ import {
   Typography,
 } from 'antd';
 
-import avatar from '../../assets/default-avatar.svg';
-import {useDarkMode} from '../hooks/useDarkMode';
+import avatar from '../../../../assets/default-avatar.svg';
+import {useDarkMode} from '../../../hooks/useDarkMode';
 
 export default function PageHeader() {
   const {isDarkMode, toggle} = useDarkMode();

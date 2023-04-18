@@ -1,11 +1,11 @@
 import {ConfigProvider, Layout, message, Space, theme} from 'antd';
 import {lazy, Suspense} from 'react';
 
-import {SuspensesedLangSelector} from '../components/lang-selector';
-import PageHeader from '../components/page-header';
-import {DetectTextController} from '../features/detect-text/controller';
+import {SuspensesedLangSelector} from '../features/ocr/components/lang-selector';
+import PageHeader from '../features/ocr/components/page-header';
+import {DetectTextController} from '../features/ocr/features/detect-text/controller';
 
-const LanguageSelector = lazy(() => import('../components/lang-selector'));
+const LanguageSelector = lazy(() => import('../features/ocr/components/lang-selector'));
 
 export default function OcrPage() {
   const [messageApi, contextHolder] = message.useMessage();
