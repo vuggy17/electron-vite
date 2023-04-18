@@ -53,21 +53,7 @@ app
       },
     });
     mainWindow.setSize(1500, 1024);
-    /**
-     * If the 'show' property of the BrowserWindow's constructor is omitted from the initialization options,
-     * it then defaults to 'true'. This can cause flickering as the window loads the html content,
-     * and it also has show problematic behaviour with the closing of the window.
-     * Use `show: false` and listen to the  `ready-to-show` event to show the window.
-     *
-     * @see https://github.com/electron/electron/issues/25012 for the afford mentioned issue.
-     */
-    mainWindow.on('ready-to-show', () => {
-      mainWindow?.show();
 
-      if (import.meta.env.DEV) {
-        mainWindow?.webContents.openDevTools();
-      }
-    });
     const translateWindow = await createOverlayWindow();
 
     // Init modules
@@ -78,7 +64,6 @@ app
       new OcrModule(),
       new CapturerModule(),
     );
-
     /**
      * URL for main window.
      * Vite dev server for development.
@@ -128,9 +113,7 @@ if (import.meta.env.PROD) {
     .then(() => import('electron-updater'))
     .then(module => {
       const autoUpdater =
-        module.autoUpdater ||
-        // @ts-expect-error Hotfix for https://github.com/electron-userland/electron-builder/issues/7338
-        (module.default.autoUpdater as typeof module['autoUpdater']);
+        module.autoUpdater || (module.default.autoUpdater as (typeof module)['autoUpdater']);
       return autoUpdater.checkForUpdatesAndNotify();
     })
     .catch(e => logger.error('Failed check and install updates:', e));

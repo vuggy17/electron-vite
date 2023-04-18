@@ -31,6 +31,8 @@ export class SettingModule extends Module {
     this._setting.launchPosition.y = y;
 
     this.store.set('launchPosition', this._setting.launchPosition);
+
+    console.log(this.store.get('launchPosition'));
   }
 
   get setting(): UserSettings {

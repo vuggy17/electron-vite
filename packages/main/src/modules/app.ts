@@ -20,6 +20,34 @@ export default class AppModule extends WindowedModule {
     await this.settingModule.load();
 
     console.log(this.settingModule.setting.launchPosition);
+
+    /**
+     * If the 'show' property of the BrowserWindow's constructor is omitted from the initialization options,
+     * it then defaults to 'true'. This can cause flickering as the window loads the html content,
+     * and it also has show problematic behaviour with the closing of the window.
+     * Use `show: false` and listen to the  `ready-to-show` event to show the window.
+     *
+     * @see https://github.com/electron/electron/issues/25012 for the afford mentioned issue.
+     */
+    this.window.on('ready-to-show', () => {
+      // hot reload
+      if (import.meta.env.DEV) {
+        this.window.removeAllListeners();
+      }
+
+      const {x, y} = this.settingModule.setting.launchPosition;
+      this.window.setPosition(x, y);
+      this.window?.show();
+
+      if (import.meta.env.DEV) {
+        this.window?.webContents.openDevTools();
+      }
+    });
+
+    this.window.on('moved', () => {
+      const [xPos, yPos] = this.window.getPosition();
+      this.settingModule.setPosition(xPos, yPos);
+    });
   }
 
   ensureSingleInstance(): void {
